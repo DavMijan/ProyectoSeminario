@@ -1,10 +1,8 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Mostrar</h1>
-@stop
+@section('template_title')
+    {{ $conductore->name ?? "{{ __('Show') Conductore" }}
+@endsection
 
 @section('content')
     <section class="content container-fluid">
@@ -13,38 +11,34 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Vehiculo</span>
+                            <span class="card-title">{{ __('Mostrar') }} Conductore</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('vehiculos.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('conductores.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Tipovehiculo:</strong>
-                            {{ $vehiculo->TipoVehiculo }}
+                            <strong>Nombre:</strong>
+                            {{ $conductore->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Marca:</strong>
-                            {{ $vehiculo->Marca }}
+                            <strong>Apellido:</strong>
+                            {{ $conductore->apellido }}
                         </div>
                         <div class="form-group">
-                            <strong>Modelo:</strong>
-                            {{ $vehiculo->Modelo }}
+                            <strong>Edad:</strong>
+                            {{ $conductore->edad }}
                         </div>
                         <div class="form-group">
-                            <strong>Año:</strong>
-                            {{ $vehiculo->Año }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Kilometraje:</strong>
-                            {{ $vehiculo->Kilometraje }}
+                            <strong>Id Vehiculos:</strong>
+                            {{ $conductore->id_vehiculos }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $vehiculo->Estado }}
+                            {{ $conductore->estado }}
                         </div>
 
                     </div>

@@ -1,10 +1,8 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Crear</h1>
-@stop
+@section('template_title')
+    {{ __('Create') }} Conductore
+@endsection
 
 @section('content')
     <section class="content container-fluid">
@@ -15,13 +13,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Crear') }} Vehiculo</span>
+                        <span class="card-title">{{ __('Create') }} Conductore</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('vehiculos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('conductores.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('vehiculo.form')
+                            @include('conductore.form')
 
                         </form>
                     </div>

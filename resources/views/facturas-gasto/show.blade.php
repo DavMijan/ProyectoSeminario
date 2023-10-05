@@ -1,10 +1,8 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Mostrar</h1>
-@stop
+@section('template_title')
+    {{ $facturasGasto->name ?? "{{ __('Mostrar') Facturas Gasto" }}
+@endsection
 
 @section('content')
     <section class="content container-fluid">
@@ -13,38 +11,34 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Vehiculo</span>
+                            <span class="card-title">{{ __('Show') }} Facturas Gasto</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('vehiculos.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('facturas-gastos.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Tipovehiculo:</strong>
-                            {{ $vehiculo->TipoVehiculo }}
+                            <strong>Codigofactura:</strong>
+                            {{ $facturasGasto->codigoFactura }}
                         </div>
                         <div class="form-group">
-                            <strong>Marca:</strong>
-                            {{ $vehiculo->Marca }}
+                            <strong>Fecha:</strong>
+                            {{ $facturasGasto->fecha }}
                         </div>
                         <div class="form-group">
-                            <strong>Modelo:</strong>
-                            {{ $vehiculo->Modelo }}
+                            <strong>Cantidadgalones:</strong>
+                            {{ $facturasGasto->cantidadgalones }}
                         </div>
                         <div class="form-group">
-                            <strong>Año:</strong>
-                            {{ $vehiculo->Año }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Kilometraje:</strong>
-                            {{ $vehiculo->Kilometraje }}
+                            <strong>Montototal:</strong>
+                            {{ $facturasGasto->montototal }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $vehiculo->Estado }}
+                            {{ $facturasGasto->estado }}
                         </div>
 
                     </div>

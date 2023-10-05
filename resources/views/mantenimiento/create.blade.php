@@ -6,6 +6,7 @@
     <h1>Crear</h1>
 @stop
 
+
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -15,13 +16,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Crear') }} Vehiculo</span>
+                        <span class="card-title">{{ __('Crear') }} Mantenimiento</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('vehiculos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('mantenimientos.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('vehiculo.form')
+                            @include('mantenimiento.form')
 
                         </form>
                     </div>

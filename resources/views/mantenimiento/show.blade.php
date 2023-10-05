@@ -13,38 +13,30 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Vehiculo</span>
+                            <span class="card-title">{{ __('Mostrar') }} Mantenimiento</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('vehiculos.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('mantenimientos.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Tipovehiculo:</strong>
-                            {{ $vehiculo->TipoVehiculo }}
+                            <strong>Id Vehiculos:</strong>
+                            {{ $mantenimiento->id_vehiculos }}
                         </div>
                         <div class="form-group">
-                            <strong>Marca:</strong>
-                            {{ $vehiculo->Marca }}
+                            <strong>Tipomantenimiento:</strong>
+                            {{ $mantenimiento->tipomantenimiento }}
                         </div>
                         <div class="form-group">
-                            <strong>Modelo:</strong>
-                            {{ $vehiculo->Modelo }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Año:</strong>
-                            {{ $vehiculo->Año }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Kilometraje:</strong>
-                            {{ $vehiculo->Kilometraje }}
+                            <strong>Costomantenimiento:</strong>
+                            {{ $mantenimiento->costomantenimiento }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $vehiculo->Estado }}
+                            {{ $mantenimiento->estado }}
                         </div>
 
                     </div>

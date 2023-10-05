@@ -326,12 +326,7 @@ return [
         ], */
         
         //Menu de Administrador
-        [
-            'text'        => 'Estadisticas',
-            'url'         => '/mant/show',
-            'icon'        => 'fas fa-file-alt',
-            'can'       => 'admins',
-        ],
+
         [
             'text'        => 'Vehiculos',
             'url'         => 'vehiculos',
@@ -339,30 +334,41 @@ return [
             'can'       => 'admins',
         ],
         [
-            'text'        => 'Usuarios',
-            'url'         => 'dash/crud',
+            'text'        => 'Conductores',
+            'url'         => 'conductores',
             'icon'        => 'fas fa-address-book',
             'can'       => 'admins',
         ],
         [
-            'text'        => 'Asignaciones',
-            'url'         => 'dash/crud',
+            'text'        => 'Factura Gastos',
+            'url'         => 'facturas-gastos',
             'icon'        => 'fas fa-business-time',
             'can'       => 'admins',
         ],
         [
-            'text'        => 'Reportes',
-            'url'         => 'dash/crud',
+            'text'        => 'Viajes',
+            'url'         => 'viajes',
             'icon'        => 'fas fa-chart-bar',
             'can'       => 'admins',
         ],
         [
-            'text'        => 'Alertas',
-            'url'         => 'dash/crud',
+            'text'        => 'Mantenimientos',
+            'url'         => 'mantenimientos',
             'icon'        => 'fas fa-bell',
             'can'       => 'admins',
         ],
-
+        [
+            'text'        => 'Notificaciones',
+            'url'         => 'notificaciones',
+            'icon'        => 'fas fa-bell',
+            'can'       => 'admins',
+        ],
+        [
+            'text'        => 'Piezas',
+            'url'         => 'piezas',
+            'icon'        => 'fas fa-bell',
+            'can'       => 'admins',
+        ],
         //Menu Usuario Estandard
         [
             'text'        => 'Salidas',

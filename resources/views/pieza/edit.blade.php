@@ -1,27 +1,26 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Crear</h1>
-@stop
+@section('template_title')
+    {{ __('Update') }} Pieza
+@endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="row">
+        <div class="">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Crear') }} Vehiculo</span>
+                        <span class="card-title">{{ __('Editar') }} Pieza</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('vehiculos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('piezas.update', $pieza->id) }}"  role="form" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('vehiculo.form')
+                            @include('pieza.form')
 
                         </form>
                     </div>
