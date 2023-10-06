@@ -15,7 +15,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Crear') }} Pieza</span>
+                        <span class="card-title">{{ __('Create') }} Pieza</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('piezas.store') }}"  role="form" enctype="multipart/form-data">

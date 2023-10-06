@@ -13,18 +13,18 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Viaje</span>
+                            <span class="card-title">{{ __('Show') }} Viaje</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('viajes.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('viajes.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Id Conductores:</strong>
-                            {{ $viaje->id_conductores }}
+                            <strong>Id Conductor:</strong>
+                            {{ $viaje->id_conductor }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha:</strong>
@@ -47,12 +47,28 @@
                             {{ $viaje->kilometrajellegada }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Lugares:</strong>
-                            {{ $viaje->id_lugares }}
+                            <strong>Departamento:</strong>
+                            {{ $viaje->departamento }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Facturas Gastos:</strong>
-                            {{ $viaje->id_facturas_gastos }}
+                            <strong>Municipio:</strong>
+                            {{ $viaje->municipio }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Direccion:</strong>
+                            {{ $viaje->direccion }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Codigofactura:</strong>
+                            {{ $viaje->codigoFactura }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Cantidadgalones:</strong>
+                            {{ $viaje->cantidadgalones }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Montototal:</strong>
+                            {{ $viaje->montototal }}
                         </div>
                         <div class="form-group">
                             <strong>Objetivovisita:</strong>

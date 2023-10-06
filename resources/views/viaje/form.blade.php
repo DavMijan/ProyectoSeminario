@@ -1,11 +1,31 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#departamento').on('change', function () {
+            var selectedDepartamento = $(this).val();
+            var municipios = {!! json_encode($departamentos) !!}[selectedDepartamento];
+            
+            $('#municipio').empty();
+            $.each(municipios, function (index, municipio) {
+                $('#municipio').append('<option value="' + municipio + '">' + municipio + '</option>');
+            });
+        });
+    });
+</script>
+
 <div class="box box-info padding-1">
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('id_conductores') }}
-            {{ Form::text('id_conductores', $viaje->id_conductores, ['class' => 'form-control' . ($errors->has('id_conductores') ? ' is-invalid' : ''), 'placeholder' => 'Id Conductores']) }}
-            {!! $errors->first('id_conductores', '<div class="invalid-feedback">:message</div>') !!}
+            <label for="id_conductor">Conductor:</label>
+            <select name="id_conductor" id="id_conductor" class="form-control" disabled>
+                <option value="{{ Auth::id() }}">{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</option>
+            </select>
         </div>
+        
+        <!-- Campo oculto para el id_conductor -->
+        <input type="hidden" name="id_conductor" value="{{ $id_conductor_hidden }}">        
         <div class="form-group">
             {{ Form::label('fecha') }}
             {{ Form::text('fecha', $viaje->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
@@ -32,28 +52,52 @@
             {!! $errors->first('kilometrajellegada', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_lugares') }}
-            {{ Form::text('id_lugares', $viaje->id_lugares, ['class' => 'form-control' . ($errors->has('id_lugares') ? ' is-invalid' : ''), 'placeholder' => 'Id Lugares']) }}
-            {!! $errors->first('id_lugares', '<div class="invalid-feedback">:message</div>') !!}
+            <label for="departamento">Departamento:</label>
+            <select name="departamento" id="departamento" class="form-control">
+                <option value="">Selecciona un departamento</option>
+                @foreach ($departamentos as $departamento => $municipios)
+                    <option value="{{ $departamento }}">{{ $departamento }}</option>
+                @endforeach
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="municipio">Municipio:</label>
+            <select name="municipio" id="municipio" class="form-control">
+                <!-- Los municipios se cargarán dinámicamente aquí -->
+            </select>
+        </div>
+        
+        
+        <div class="form-group">
+            {{ Form::label('direccion') }}
+            {{ Form::text('direccion', $viaje->direccion, ['class' => 'form-control' . ($errors->has('direccion') ? ' is-invalid' : ''), 'placeholder' => 'Direccion']) }}
+            {!! $errors->first('direccion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_facturas_gastos') }}
-            {{ Form::text('id_facturas_gastos', $viaje->id_facturas_gastos, ['class' => 'form-control' . ($errors->has('id_facturas_gastos') ? ' is-invalid' : ''), 'placeholder' => 'Id Facturas Gastos']) }}
-            {!! $errors->first('id_facturas_gastos', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('codigoFactura') }}
+            {{ Form::text('codigoFactura', $viaje->codigoFactura, ['class' => 'form-control' . ($errors->has('codigoFactura') ? ' is-invalid' : ''), 'placeholder' => 'Codigofactura']) }}
+            {!! $errors->first('codigoFactura', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('cantidadgalones') }}
+            {{ Form::text('cantidadgalones', $viaje->cantidadgalones, ['class' => 'form-control' . ($errors->has('cantidadgalones') ? ' is-invalid' : ''), 'placeholder' => 'Cantidadgalones']) }}
+            {!! $errors->first('cantidadgalones', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('montototal') }}
+            {{ Form::text('montototal', $viaje->montototal, ['class' => 'form-control' . ($errors->has('montototal') ? ' is-invalid' : ''), 'placeholder' => 'Montototal']) }}
+            {!! $errors->first('montototal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('objetivovisita') }}
             {{ Form::text('objetivovisita', $viaje->objetivovisita, ['class' => 'form-control' . ($errors->has('objetivovisita') ? ' is-invalid' : ''), 'placeholder' => 'Objetivovisita']) }}
             {!! $errors->first('objetivovisita', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('estado') }}
-            {{ Form::text('estado', $viaje->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
-            {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <a href="{{ route ('viajes.index')}}" class="btn btn-danger">Cancelar</a>
     </div>
 </div>

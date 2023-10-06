@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('mantenimientos', function (Blueprint $table) {
             $table->id();
-
             $table->unsignedBigInteger('id_vehiculos');
             $table->foreign('id_vehiculos')->references('id')->on('vehiculos');
-
+            $table->unsignedBigInteger('id_pieza');
+            $table->foreign('id_pieza')->references('id')->on('piezas');
             $table->string('tipomantenimiento');
+            $table->float('Kil_insta_o_mant');
             $table->float('costomantenimiento');
-            $table->integer('estado');
+            $table->integer('estado')->default(1);
             
             $table->timestamps();
         });

@@ -2,6 +2,14 @@
     <div class="box-body">
         
         <div class="form-group">
+            <label for="id_conductor">Conductor:</label>
+            <select name="id_conductor" id="id_conductor" class="form-control">
+                @foreach ($users as $users)
+                    <option value="{{ $users->id }}">{{ $users->nombre }} {{ $users->apellido }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             {{ Form::label('TipoVehiculo') }}
             {{ Form::text('TipoVehiculo', $vehiculo->TipoVehiculo, ['class' => 'form-control' . ($errors->has('TipoVehiculo') ? ' is-invalid' : ''), 'placeholder' => 'Tipovehiculo']) }}
             {!! $errors->first('TipoVehiculo', '<div class="invalid-feedback">:message</div>') !!}
@@ -26,15 +34,9 @@
             {{ Form::text('Kilometraje', $vehiculo->Kilometraje, ['class' => 'form-control' . ($errors->has('Kilometraje') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje']) }}
             {!! $errors->first('Kilometraje', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('Estado') }}
-            {{ Form::text('Estado', $vehiculo->Estado, ['class' => 'form-control' . ($errors->has('Estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
-            {!! $errors->first('Estado', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
-        <a href="{{ route ('vehiculos.index')}}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </div>
 </div>

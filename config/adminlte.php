@@ -334,8 +334,8 @@ return [
             'can'       => 'admins',
         ],
         [
-            'text'        => 'Conductores',
-            'url'         => 'conductores',
+            'text'        => 'Usuarios',
+            'url'         => 'users',
             'icon'        => 'fas fa-address-book',
             'can'       => 'admins',
         ],

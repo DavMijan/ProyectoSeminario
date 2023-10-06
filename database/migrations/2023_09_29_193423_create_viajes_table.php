@@ -13,25 +13,21 @@ return new class extends Migration
     {
         Schema::create('viajes', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('id_conductores');
-            $table->foreign('id_conductores')->references('id')->on('conductores');
-
+            $table->unsignedBigInteger('id_conductor');
+            $table->foreign('id_conductor')->references('id')->on('users');
             $table->date('fecha');
             $table->string('horasalida');
             $table->string('kilometrajesalida');
             $table->string('horallegada');
             $table->string('kilometrajellegada');
-
-            $table->unsignedBigInteger('id_lugares');
-            $table->foreign('id_lugares')->references('id')->on('lugares');
-
-            $table->unsignedBigInteger('id_facturas_gastos');
-            $table->foreign('id_facturas_gastos')->references('id')->on('facturas_gastos');
-
+            $table->string('departamento');
+            $table->string('municipio');
+            $table->string('direccion');
+            $table->string('codigoFactura');
+            $table->float('cantidadgalones');
+            $table->float('montototal');
             $table->string('objetivovisita');
-            $table->integer('estado');
-
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }

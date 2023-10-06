@@ -3,63 +3,64 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Vehiculos</h1>
-    <div class="float-right">
-        <a href="{{ route('vehiculos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-          {{ __('Crear Nuevo') }}
-        </a>
-      </div>
+<div class="float-right">
+    <a href="{{ route('vehiculos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+      {{ __('Create New') }}
+    </a>
+  </div>
 @stop
-
 @section('content')
 <table id="example" class="table table-striped table-bordered" style="width:100%">
-    <thead>
-                                <tr>
-                                    <th>No</th>
-                                    
-                                    <th>Tipo vehiculo</th>
-                                    <th>Marca</th>
-                                    <th>Modelo</th>
-                                    <th>Año</th>
-                                    <th>Kilometraje</th>
-                                    <th>Estado</th>
-
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($vehiculos as $vehiculo)
+    <div class="container-fluid">
+                                <thead class="thead">
                                     <tr>
-                                        <td>{{ ++$i }}</td>
+                                        <th>No</th>
                                         
-                                        <td>{{ $vehiculo->TipoVehiculo }}</td>
-                                        <td>{{ $vehiculo->Marca }}</td>
-                                        <td>{{ $vehiculo->Modelo }}</td>
-                                        <td>{{ $vehiculo->Año }}</td>
-                                        <td>{{ $vehiculo->Kilometraje }}</td>
-                                        <td>{{ $vehiculo->Estado }}</td>
+										<th>Id Conductor</th>
+										<th>Tipovehiculo</th>
+										<th>Marca</th>
+										<th>Modelo</th>
+										<th>Año</th>
+										<th>Kilometraje</th>
+										<th>Estado</th>
 
-                                        <td>
-                                            <form action="{{ route('vehiculos.destroy',$vehiculo->id) }}" method="POST">
-                                                <a class="btn btn-sm btn-primary " href="{{ route('vehiculos.show',$vehiculo->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                <a class="btn btn-sm btn-success" href="{{ route('vehiculos.edit',$vehiculo->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                            </form>
-                                        </td>
+                                        <th></th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($vehiculos as $vehiculo)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            
+											<td>{{ $vehiculo->id_conductor }}</td>
+											<td>{{ $vehiculo->TipoVehiculo }}</td>
+											<td>{{ $vehiculo->Marca }}</td>
+											<td>{{ $vehiculo->Modelo }}</td>
+											<td>{{ $vehiculo->Año }}</td>
+											<td>{{ $vehiculo->Kilometraje }}</td>
+											<td>{{ $vehiculo->estado }}</td>
+
+                                            <td>
+                                                <form action="{{ route('vehiculos.destroy',$vehiculo->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('vehiculos.show',$vehiculo->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('vehiculos.edit',$vehiculo->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                {!! $vehiculos->links() !!}
             </div>
-            {!! $vehiculos->links() !!}
         </div>
     </div>
-</div>
-@stop
+@endsection
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
@@ -80,7 +81,3 @@
     });
     </script>
 @stop
-
-
-
-

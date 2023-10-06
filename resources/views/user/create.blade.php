@@ -5,7 +5,6 @@
 @section('content_header')
     <h1>Crear</h1>
 @stop
-
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -15,13 +14,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Crear') }} Notificacione</span>
+                        <span class="card-title">{{ __('Create') }} User</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('notificaciones.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('notificacione.form')
+                            @include('user.form')
 
                         </form>
                     </div>

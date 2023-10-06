@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Viaje;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ViajeController
@@ -31,8 +33,27 @@ class ViajeController extends Controller
      */
     public function create()
     {
+        $departamentos = [
+            'Departamento 1' => ['Municipio 1', 'Municipio 2', 'Municipio 3'],
+            'Departamento 2' => ['Municipio 4', 'Municipio 5', 'Municipio 6'],
+            // Agrega más departamentos y municipios según tus necesidades
+        ];
         $viaje = new Viaje();
-        return view('viaje.create', compact('viaje'));
+        $viaje->id_conductor = Auth::id(); // Establece el ID del conductor autenticado
+
+        // Puedes agregar el ID del conductor autenticado como campo oculto
+        $id_conductor_hidden = Auth::id();
+    
+        $users = User::all(['id', 'nombre', 'apellido']);
+        // Asigna los valores seleccionados a las propiedades correspondientes de $viaje
+        $ultimoViaje = Viaje::where('id_conductor', $viaje->id_conductor)
+        ->orderBy('fecha', 'desc')
+        ->first();
+        if ($ultimoViaje) {
+            $viaje->kilometrajesalida = $ultimoViaje->kilometrajellegada;
+        }
+        return view('viaje.create', compact('viaje', 'users','id_conductor_hidden','departamentos' ));
+        
     }
 
     /**
@@ -60,8 +81,10 @@ class ViajeController extends Controller
     public function show($id)
     {
         $viaje = Viaje::find($id);
-
-        return view('viaje.show', compact('viaje'));
+        $viaje->id_conductor = Auth::id(); // Establece el ID del conductor autenticado
+        $users = User::all(['id', 'nombre', 'apellido']); // Obtén la lista de todos los conductores con nombre y apellido
+        
+        return view('viaje.show', compact('viaje','users'));
     }
 
     /**
@@ -72,9 +95,19 @@ class ViajeController extends Controller
      */
     public function edit($id)
     {
-        $viaje = Viaje::find($id);
+        $departamentos = [
+            'Departamento 1' => ['Municipio 1', 'Municipio 2', 'Municipio 3'],
+            'Departamento 2' => ['Municipio 4', 'Municipio 5', 'Municipio 6'],
+            // Agrega más departamentos y municipios según tus necesidades
+        ];
+        $viaje->id_conductor = Auth::id(); // Establece el ID del conductor autenticado
 
-        return view('viaje.edit', compact('viaje'));
+        // Puedes agregar el ID del conductor autenticado como campo oculto
+        $id_conductor_hidden = Auth::id();
+    
+        $users = User::all(['id', 'nombre', 'apellido']); $viaje = Viaje::find($id);
+
+        return view('viaje.edit', compact('viaje', 'users','id_conductor_hidden','departamentos' ));
     }
 
     /**

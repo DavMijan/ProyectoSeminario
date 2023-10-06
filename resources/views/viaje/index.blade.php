@@ -3,28 +3,33 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Viajes</h1>
+    <h1>Mantenimientos</h1>
     <div class="float-right">
         <a href="{{ route('viajes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-          {{ __('Crear Nuevo') }}
+          {{ __('Create New') }}
         </a>
       </div>
 @stop
 
 @section('content')
 <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <div class="container-fluid">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Id Conductores</th>
+										<th>Id Conductor</th>
 										<th>Fecha</th>
 										<th>Horasalida</th>
 										<th>Kilometrajesalida</th>
 										<th>Horallegada</th>
 										<th>Kilometrajellegada</th>
-										<th>Id Lugares</th>
-										<th>Id Facturas Gastos</th>
+										<th>Departamento</th>
+										<th>Municipio</th>
+										<th>Direccion</th>
+										<th>Codigofactura</th>
+										<th>Cantidadgalones</th>
+										<th>Montototal</th>
 										<th>Objetivovisita</th>
 										<th>Estado</th>
 
@@ -36,24 +41,28 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $viaje->id_conductores }}</td>
+											<td>{{ $viaje->id_conductor }}</td>
 											<td>{{ $viaje->fecha }}</td>
 											<td>{{ $viaje->horasalida }}</td>
 											<td>{{ $viaje->kilometrajesalida }}</td>
 											<td>{{ $viaje->horallegada }}</td>
 											<td>{{ $viaje->kilometrajellegada }}</td>
-											<td>{{ $viaje->id_lugares }}</td>
-											<td>{{ $viaje->id_facturas_gastos }}</td>
+											<td>{{ $viaje->departamento }}</td>
+											<td>{{ $viaje->municipio }}</td>
+											<td>{{ $viaje->direccion }}</td>
+											<td>{{ $viaje->codigoFactura }}</td>
+											<td>{{ $viaje->cantidadgalones }}</td>
+											<td>{{ $viaje->montototal }}</td>
 											<td>{{ $viaje->objetivovisita }}</td>
 											<td>{{ $viaje->estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('viajes.destroy',$viaje->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -67,7 +76,7 @@
             </div>
         </div>
     </div>
-@stop
+@endsection
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">

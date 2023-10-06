@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pieza;
 use Illuminate\Http\Request;
+use App\Models\Vehiculo;
 
 /**
  * Class PiezaController
@@ -19,7 +20,7 @@ class PiezaController extends Controller
     public function index()
     {
         $piezas = Pieza::paginate();
-
+        
         return view('pieza.index', compact('piezas'))
             ->with('i', (request()->input('page', 1) - 1) * $piezas->perPage());
     }
@@ -32,7 +33,8 @@ class PiezaController extends Controller
     public function create()
     {
         $pieza = new Pieza();
-        return view('pieza.create', compact('pieza'));
+        $vehiculos = Vehiculo::all(['id', 'Marca', 'Modelo']);
+        return view('pieza.create', compact('pieza', 'vehiculos'));
     }
 
     /**
@@ -73,8 +75,8 @@ class PiezaController extends Controller
     public function edit($id)
     {
         $pieza = Pieza::find($id);
-
-        return view('pieza.edit', compact('pieza'));
+        $vehiculos = Vehiculo::all(['id', 'Marca', 'Modelo']);
+        return view('pieza.edit', compact('pieza','vehiculos'));
     }
 
     /**

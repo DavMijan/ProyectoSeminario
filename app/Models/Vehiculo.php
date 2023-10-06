@@ -8,19 +8,20 @@ use Illuminate\Database\Eloquent\Model;
  * Class Vehiculo
  *
  * @property $id
+ * @property $id_conductor
  * @property $TipoVehiculo
  * @property $Marca
  * @property $Modelo
  * @property $Año
  * @property $Kilometraje
- * @property $Estado
+ * @property $estado
  * @property $created_at
  * @property $updated_at
  *
- * @property Conductore[] $conductores
  * @property Mantenimiento[] $mantenimientos
  * @property Notificacione[] $notificaciones
  * @property Pieza[] $piezas
+ * @property User $user
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -28,12 +29,12 @@ class Vehiculo extends Model
 {
     
     static $rules = [
+		'id_conductor' => 'required',
 		'TipoVehiculo' => 'required',
 		'Marca' => 'required',
 		'Modelo' => 'required',
 		'Año' => 'required',
 		'Kilometraje' => 'required',
-		'Estado' => 'required',
     ];
 
     protected $perPage = 20;
@@ -43,17 +44,9 @@ class Vehiculo extends Model
      *
      * @var array
      */
-    protected $fillable = ['TipoVehiculo','Marca','Modelo','Año','Kilometraje','Estado'];
+    protected $fillable = ['id_conductor','TipoVehiculo','Marca','Modelo','Año','Kilometraje','estado'];
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function conductores()
-    {
-        return $this->hasMany('App\Models\Conductore', 'id_vehiculos', 'id');
-    }
-    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -76,6 +69,14 @@ class Vehiculo extends Model
     public function piezas()
     {
         return $this->hasMany('App\Models\Pieza', 'id_vehiculos', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'id_conductor');
     }
     
 

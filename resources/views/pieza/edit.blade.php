@@ -1,8 +1,11 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('template_title')
-    {{ __('Update') }} Pieza
-@endsection
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Editar</h1>
+@stop
+
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +16,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Editar') }} Pieza</span>
+                        <span class="card-title">{{ __('Update') }} Pieza</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('piezas.update', $pieza->id) }}"  role="form" enctype="multipart/form-data">

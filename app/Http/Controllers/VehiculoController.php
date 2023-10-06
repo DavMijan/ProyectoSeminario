@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 /**
  * Class VehiculoController
@@ -32,7 +33,8 @@ class VehiculoController extends Controller
     public function create()
     {
         $vehiculo = new Vehiculo();
-        return view('vehiculo.create', compact('vehiculo'));
+        $users = User::all(['id', 'nombre', 'apellido']); // Obtén la lista de todos los conductores con nombre y apellido
+        return view('vehiculo.create', compact('vehiculo', 'users'));
     }
 
     /**
@@ -73,8 +75,8 @@ class VehiculoController extends Controller
     public function edit($id)
     {
         $vehiculo = Vehiculo::find($id);
-
-        return view('vehiculo.edit', compact('vehiculo'));
+        $users = User::all(['id', 'nombre', 'apellido']); // Obtén la lista de todos los conductores con nombre y apellido
+        return view('vehiculo.edit', compact('vehiculo', 'users'));
     }
 
     /**

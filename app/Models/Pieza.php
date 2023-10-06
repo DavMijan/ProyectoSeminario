@@ -11,12 +11,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id_vehiculos
  * @property $nombre
  * @property $fechainstalacion
- * @property $estadocompra
+ * @property $Kil_insta_o_mant
+ * @property $Kil_para_mant
  * @property $estadopieza
  * @property $estado
  * @property $created_at
  * @property $updated_at
  *
+ * @property Mantenimiento[] $mantenimientos
+ * @property Notificacione[] $notificaciones
  * @property Vehiculo $vehiculo
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -28,9 +31,8 @@ class Pieza extends Model
 		'id_vehiculos' => 'required',
 		'nombre' => 'required',
 		'fechainstalacion' => 'required',
-		'estadocompra' => 'required',
-		'estadopieza' => 'required',
-		'estado' => 'required',
+		'Kil_insta_o_mant' => 'required',
+		'Kil_para_mant' => 'required',
     ];
 
     protected $perPage = 20;
@@ -40,9 +42,25 @@ class Pieza extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_vehiculos','nombre','fechainstalacion','estadocompra','estadopieza','estado'];
+    protected $fillable = ['id_vehiculos','nombre','fechainstalacion','Kil_insta_o_mant','Kil_para_mant','estadopieza','estado'];
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mantenimientos()
+    {
+        return $this->hasMany('App\Models\Mantenimiento', 'id_pieza', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notificaciones()
+    {
+        return $this->hasMany('App\Models\Notificacione', 'id_pieza', 'id');
+    }
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

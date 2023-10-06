@@ -5,11 +5,12 @@
 @section('content_header')
     <h1>Mantenimientos</h1>
     <div class="float-right">
-        <a href="{{ route('mantenimientos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-          {{ __('Crear Nuevo') }}
+        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+          {{ __('Create New') }}
         </a>
       </div>
 @stop
+
 @section('content')
 <table id="example" class="table table-striped table-bordered" style="width:100%">
     <div class="container-fluid">
@@ -17,31 +18,33 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Id Vehiculos</th>
-										<th>Tipo de mantenimiento</th>
-										<th>Costo de mantenimiento</th>
+										<th>Nombre</th>
+										<th>Apellido</th>
+										<th>Edad</th>
+										<th>Email</th>
 										<th>Estado</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($mantenimientos as $mantenimiento)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $mantenimiento->id_vehiculos }}</td>
-											<td>{{ $mantenimiento->tipomantenimiento }}</td>
-											<td>{{ $mantenimiento->costomantenimiento }}</td>
-											<td>{{ $mantenimiento->estado }}</td>
+											<td>{{ $user->nombre }}</td>
+											<td>{{ $user->apellido }}</td>
+											<td>{{ $user->edad }}</td>
+											<td>{{ $user->email }}</td>
+											<td>{{ $user->estado }}</td>
 
                                             <td>
-                                                <form action="{{ route('mantenimientos.destroy',$mantenimiento->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('mantenimientos.show',$mantenimiento->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('mantenimientos.edit',$mantenimiento->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -51,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $mantenimientos->links() !!}
+                {!! $users->links() !!}
             </div>
         </div>
     </div>

@@ -13,15 +13,19 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Vehiculo</span>
+                            <span class="card-title">{{ __('Show') }} Vehiculo</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('vehiculos.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('vehiculos.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
+                        <div class="form-group">
+                            <strong>Id Conductor:</strong>
+                            {{ $vehiculo->id_conductor }}
+                        </div>
                         <div class="form-group">
                             <strong>Tipovehiculo:</strong>
                             {{ $vehiculo->TipoVehiculo }}
@@ -44,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $vehiculo->Estado }}
+                            {{ $vehiculo->estado }}
                         </div>
 
                     </div>

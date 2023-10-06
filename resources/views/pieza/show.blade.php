@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('template_title')
-    {{ $pieza->name ?? "{{ __('MOstrar') Pieza" }}
-@endsection
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Mostrar</h1>
+@stop
 
 @section('content')
     <section class="content container-fluid">
@@ -11,10 +13,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Pieza</span>
+                            <span class="card-title">{{ __('Show') }} Pieza</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
@@ -33,8 +35,12 @@
                             {{ $pieza->fechainstalacion }}
                         </div>
                         <div class="form-group">
-                            <strong>Estadocompra:</strong>
-                            {{ $pieza->estadocompra }}
+                            <strong>Kil Insta O Mant:</strong>
+                            {{ $pieza->Kil_insta_o_mant }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Kil Para Mant:</strong>
+                            {{ $pieza->Kil_para_mant }}
                         </div>
                         <div class="form-group">
                             <strong>Estadopieza:</strong>

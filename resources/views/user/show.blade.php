@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('template_title')
-    {{ $facturasGasto->name ?? "{{ __('Mostrar') Facturas Gasto" }}
-@endsection
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Mostrar</h1>
+@stop
 
 @section('content')
     <section class="content container-fluid">
@@ -11,34 +13,34 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Facturas Gasto</span>
+                            <span class="card-title">{{ __('Show') }} User</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('facturas-gastos.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('users.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Codigofactura:</strong>
-                            {{ $facturasGasto->codigoFactura }}
+                            <strong>Nombre:</strong>
+                            {{ $user->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Fecha:</strong>
-                            {{ $facturasGasto->fecha }}
+                            <strong>Apellido:</strong>
+                            {{ $user->apellido }}
                         </div>
                         <div class="form-group">
-                            <strong>Cantidadgalones:</strong>
-                            {{ $facturasGasto->cantidadgalones }}
+                            <strong>Edad:</strong>
+                            {{ $user->edad }}
                         </div>
                         <div class="form-group">
-                            <strong>Montototal:</strong>
-                            {{ $facturasGasto->montototal }}
+                            <strong>Email:</strong>
+                            {{ $user->email }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $facturasGasto->estado }}
+                            {{ $user->estado }}
                         </div>
 
                     </div>

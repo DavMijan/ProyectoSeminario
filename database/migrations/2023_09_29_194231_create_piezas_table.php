@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('piezas', function (Blueprint $table) {
             $table->id();
-
             $table->unsignedBigInteger('id_vehiculos');
             $table->foreign('id_vehiculos')->references('id')->on('vehiculos');
 
             $table->string('nombre');
             $table->date('fechainstalacion');
-            $table->string('estadocompra');
+            $table->float('Kil_insta_o_mant');
+            $table->float('Kil_para_mant');
             $table->string('estadopieza');
-            $table->integer('estado');
+            $table->integer('estado')->default(1);
             
             $table->timestamps();
         });

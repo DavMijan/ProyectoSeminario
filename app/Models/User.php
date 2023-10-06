@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,39 +10,70 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Class User
+ *
+ * @property $id
+ * @property $nombre
+ * @property $apellido
+ * @property $edad
+ * @property $email
+ * @property $email_verified_at
+ * @property $password
+ * @property $remember_token
+ * @property $estado
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Vehiculo[] $vehiculos
+ * @property Viaje[] $viajes
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class User extends Authenticatable
 {
     use HasRoles;
     use HasApiTokens, HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    static $rules = [
+		'nombre' => 'required',
+		'apellido' => 'required',
+		'edad' => 'required',
+		'email' => 'required',
     ];
 
+    protected $perPage = 20;
+
     /**
-     * The attributes that should be hidden for serialization.
+     * Attributes that should be mass-assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
+    protected $fillable = ['nombre','apellido','edad','email','password'];
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'email_verified_at' => 'datetime',
     ];
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    
+    public function vehiculos()
+    {
+        return $this->hasMany('App\Models\Vehiculo', 'id_conductor', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function viajes()
+    {
+        return $this->hasMany('App\Models\Viaje', 'id_conductor', 'id');
+    }
+    
+
 }

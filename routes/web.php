@@ -27,19 +27,19 @@ Route::middleware([
 
 Auth::routes();
 
+//Users
+Route::resource('users', App\Http\Controllers\UserController::class);
 //Vehiculos
 Route::resource('vehiculos', App\Http\Controllers\VehiculoController::class);
 //Viajes
 Route::resource('viajes', App\Http\Controllers\ViajeController::class);
-//Facturas Gastos
-Route::resource('facturas-gastos', App\Http\Controllers\FacturasGastoController::class);
-//Conductores
-Route::resource('conductores', App\Http\Controllers\ConductoreController::class);
+//Piezas
+Route::resource('piezas', App\Http\Controllers\PiezaController::class);
+
 //Mantenimientos
 Route::resource('mantenimientos', App\Http\Controllers\MantenimientoController::class);
 //Notificaciones
 Route::resource('notificaciones', App\Http\Controllers\NotificacioneController::class);
-//Piezas
-Route::resource('piezas', App\Http\Controllers\PiezaController::class);
+
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

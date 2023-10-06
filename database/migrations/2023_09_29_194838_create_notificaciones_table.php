@@ -16,9 +16,10 @@ return new class extends Migration
 
             $table->unsignedBigInteger('id_vehiculos');
             $table->foreign('id_vehiculos')->references('id')->on('vehiculos');
-
+            $table->unsignedBigInteger('id_pieza');
+            $table->foreign('id_pieza')->references('id')->on('piezas');
             $table->string('detalle');
-            $table->integer('estado');
+            $table->integer('estado')->default(1);
 
             $table->timestamps();
         });
