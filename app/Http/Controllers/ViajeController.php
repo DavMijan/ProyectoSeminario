@@ -6,6 +6,11 @@ use App\Models\Viaje;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Pieza;
+use App\Models\Notificacione;
+use Illuminate\Support\Facades\DB;
+use App\Models\Vehiculo;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Class ViajeController
@@ -18,9 +23,19 @@ class ViajeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     
+     public function index()
     {
-        $viajes = Viaje::paginate();
+        if (Gate::allows('admins')) {
+            $viajes = Viaje::paginate();
+        } elseif (Gate::allows('standard')) {
+            $idbuscar = Auth::id();
+            $viajes  = Viaje::where('id_conductor', Auth::id())->paginate();
+        } else {
+            abort(403); // Mostrar un error 403 si el usuario no tiene permiso
+        }
+        
 
         return view('viaje.index', compact('viajes'))
             ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());
@@ -386,12 +401,11 @@ class ViajeController extends Controller
             ],
             // Agrega más departamentos y municipios según tus necesidades
         ];
+
         $viaje = new Viaje();
         $viaje->id_conductor = Auth::id(); // Establece el ID del conductor autenticado
-
         // Puedes agregar el ID del conductor autenticado como campo oculto
         $id_conductor_hidden = Auth::id();
-    
         $users = User::all(['id', 'nombre', 'apellido']);
         // Asigna los valores seleccionados a las propiedades correspondientes de $viaje
         $ultimoViaje = Viaje::where('id_conductor', $viaje->id_conductor)
@@ -400,6 +414,8 @@ class ViajeController extends Controller
         if ($ultimoViaje) {
             $viaje->kilometrajesalida = $ultimoViaje->kilometrajellegada;
         }
+
+
         return view('viaje.create', compact('viaje', 'users','id_conductor_hidden','departamentos' ));
         
     }
@@ -415,7 +431,22 @@ class ViajeController extends Controller
         request()->validate(Viaje::$rules);
 
         $viaje = Viaje::create($request->all());
-
+        //$this->generarNotificaciones($viaje);
+        $idbuscar = Auth::id();
+        $vehiculo = Vehiculo::where('id_conductor', $idbuscar)->first();
+        $piezas = Pieza::where('id_vehiculos', $vehiculo->id)->get();
+        foreach ($piezas as $pieza) {
+            $diferencia = ($pieza->Kil_insta_o_mant+$pieza->Kil_para_mant )- $viaje->kilometrajellegada;
+            if ($diferencia <= 100) {
+                // Crear una notificación para esta pieza
+                Notificacione::create([
+                    'id_vehiculos' => $vehiculo->id,
+                    'id_pieza' => $pieza->id,
+                    'detalle' => 'La pieza "' . $pieza->nombre . '" requiere mantenimiento.',
+                    'estado' => 1,
+                ]);
+            }
+        }
         return redirect()->route('viajes.index')
             ->with('success', 'Viaje created successfully.');
     }

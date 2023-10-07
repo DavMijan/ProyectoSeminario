@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Notificacione;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Vehiculo;
 
 /**
  * Class NotificacioneController
@@ -18,7 +21,17 @@ class NotificacioneController extends Controller
      */
     public function index()
     {
-        $notificaciones = Notificacione::paginate();
+        if (Gate::allows('admins')) {
+            $notificaciones = Notificacione::paginate();
+        } elseif (Gate::allows('standard')) {
+            $idbuscar = Auth::id();
+            $vehiculo = Vehiculo::select('id', 'Marca', 'Modelo')
+            ->where('id_conductor', $idbuscar)
+            ->first();
+            $notificaciones = Notificacione::where('id_vehiculos', $vehiculo->id)->paginate();
+        } else {
+            abort(403); // Mostrar un error 403 si el usuario no tiene permiso
+        }
 
         return view('notificacione.index', compact('notificaciones'))
             ->with('i', (request()->input('page', 1) - 1) * $notificaciones->perPage());

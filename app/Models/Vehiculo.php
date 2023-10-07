@@ -79,5 +79,9 @@ class Vehiculo extends Model
         return $this->hasOne('App\Models\User', 'id', 'id_conductor');
     }
     
+    public function viajes()
+    {
+        return $this->hasMany(Viaje::class, 'id_vehiculos', 'id');
+    }
 
 }

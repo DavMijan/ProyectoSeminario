@@ -31,7 +31,7 @@ class Mantenimiento extends Model
 		'tipomantenimiento' => 'required',
 		'Kil_insta_o_mant' => 'required',
 		'costomantenimiento' => 'required',
-		'estado' => 'required',
+
     ];
 
     protected $perPage = 20;
