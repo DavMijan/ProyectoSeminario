@@ -6,6 +6,7 @@
     <h1>Mostrar</h1>
 @stop
 
+
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -13,10 +14,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Piezas</span>
+                            <span class="card-title">{{ __('Mostrar') }} Notificacion</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('notificaciones.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
@@ -24,31 +25,19 @@
                         
                         <div class="form-group">
                             <strong>Id Vehiculos:</strong>
-                            {{ $pieza->id_vehiculos }}
+                            {{ $notificacione->id_vehiculos }}
                         </div>
                         <div class="form-group">
-                            <strong>Nombre:</strong>
-                            {{ $pieza->nombre }}
+                            <strong>Id Pieza:</strong>
+                            {{ $notificacione->id_pieza }}
                         </div>
                         <div class="form-group">
-                            <strong>Fechainstalacion:</strong>
-                            {{ $pieza->fechainstalacion }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Kil Insta O Mant:</strong>
-                            {{ $pieza->Kil_insta_o_mant }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Kil Para Mant:</strong>
-                            {{ $pieza->Kil_para_mant }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Estadopieza:</strong>
-                            {{ $pieza->estadopieza }}
+                            <strong>Detalle:</strong>
+                            {{ $notificacione->detalle }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $pieza->estado }}
+                            {{ $notificacione->estado }}
                         </div>
 
                     </div>

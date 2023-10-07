@@ -13,10 +13,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} User</span>
+                            <span class="card-title">{{ __('Mostrar') }} Usuarios</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('users.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('users.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 

@@ -13,10 +13,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }} Piezas</span>
+                            <span class="card-title">{{ __('Ver') }} Mantenimiento</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('mantenimientos.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
@@ -24,31 +24,27 @@
                         
                         <div class="form-group">
                             <strong>Id Vehiculos:</strong>
-                            {{ $pieza->id_vehiculos }}
+                            {{ $mantenimiento->id_vehiculos }}
                         </div>
                         <div class="form-group">
-                            <strong>Nombre:</strong>
-                            {{ $pieza->nombre }}
+                            <strong>Id Pieza:</strong>
+                            {{ $mantenimiento->id_pieza }}
                         </div>
                         <div class="form-group">
-                            <strong>Fechainstalacion:</strong>
-                            {{ $pieza->fechainstalacion }}
+                            <strong>Tipomantenimiento:</strong>
+                            {{ $mantenimiento->tipomantenimiento }}
                         </div>
                         <div class="form-group">
                             <strong>Kil Insta O Mant:</strong>
-                            {{ $pieza->Kil_insta_o_mant }}
+                            {{ $mantenimiento->Kil_insta_o_mant }}
                         </div>
                         <div class="form-group">
-                            <strong>Kil Para Mant:</strong>
-                            {{ $pieza->Kil_para_mant }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Estadopieza:</strong>
-                            {{ $pieza->estadopieza }}
+                            <strong>Costomantenimiento:</strong>
+                            {{ $mantenimiento->costomantenimiento }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $pieza->estado }}
+                            {{ $mantenimiento->estado }}
                         </div>
 
                     </div>

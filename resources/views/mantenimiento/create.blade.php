@@ -15,13 +15,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Crear') }} Piezas</span>
+                        <span class="card-title">{{ __('Crear') }} Mantenimiento</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('piezas.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('mantenimientos.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('pieza.form')
+                            @include('mantenimiento.form')
 
                         </form>
                     </div>
