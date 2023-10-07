@@ -348,7 +348,7 @@ return [
         [
             'text'        => 'Mantenimientos',
             'url'         => 'mantenimientos',
-            'icon'        => 'fas fa-bell',
+            'icon'        => 'fas fa-tachometer-alt',
             'can'       => 'admins',
         ],
         [
@@ -360,29 +360,34 @@ return [
         [
             'text'        => 'Piezas',
             'url'         => 'piezas',
-            'icon'        => 'fas fa-bell',
+            'icon'        => 'fas fa-tools',
             'can'       => 'admins',
         ],
         //Menu Usuario Estandard
         [
             'text'        => 'Salidas',
-            'url'         => 'admin/pages',
+            'url'         => 'viajes',
             'icon'        => 'fas fa-car-side',
             'can'       => 'standard',
         ],
         [
             'text'        => 'Mantenimientos',
-            'url'         => 'admin/pages',
+            'url'         => 'mantenimientos',
             'icon'        => 'fas fa-tachometer-alt',
             'can'       => 'standard',
         ],
         [
             'text'        => 'Alertas',
-            'url'         => 'admin/pages',
+            'url'         => 'notificaciones',
             'icon'        => 'fas fa-bell',
             'can'       => 'standard',
         ],
-
+        [
+            'text'        => 'Piezas',
+            'url'         => 'piezas',
+            'icon'        => 'fas fa-tools',
+            'can'       => 'standard',
+        ],
         ['header' => 'CONFIGUACION CUENTA'],
         [
             'text' => 'Perfil',

@@ -3,13 +3,20 @@
         
         <div class="form-group">
             {{ Form::label('id_vehiculos') }}
-            {{ Form::text('id_vehiculos', $mantenimiento->id_vehiculos, ['class' => 'form-control' . ($errors->has('id_vehiculos') ? ' is-invalid' : ''), 'placeholder' => 'No. Vehiculos']) }}
+            {{ Form::text('id_vehiculos', $mantenimiento->id_vehiculos, ['class' => 'form-control' . ($errors->has('id_vehiculos') ? ' is-invalid' : ''), 'placeholder' => 'Id Vehiculos']) }}
             {!! $errors->first('id_vehiculos', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
+        <!-- Campo oculto para el id_conductor -->
+        <input type="hidden" name="id_vehiculos" value="{{ $vehiculo->id }}">  
+
         <div class="form-group">
-            {{ Form::label('id_pieza') }}
-            {{ Form::text('id_pieza', $mantenimiento->id_pieza, ['class' => 'form-control' . ($errors->has('id_pieza') ? ' is-invalid' : ''), 'placeholder' => 'Id Pieza']) }}
-            {!! $errors->first('id_pieza', '<div class="invalid-feedback">:message</div>') !!}
+            <label for="id_pieza">Piezas:</label>
+            <select name="id_pieza" id="id_pieza" class="form-control">
+                @foreach ($piezas as $piezas)
+                    <option value="{{ $piezas->id }}">{{ $piezas->nombre }} {{ $piezas->Kil_insta_o_mant }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             {{ Form::label('tipo mantenimiento') }}
@@ -25,11 +32,6 @@
             {{ Form::label('costo mantenimiento') }}
             {{ Form::text('costo mantenimiento', $mantenimiento->costomantenimiento, ['class' => 'form-control' . ($errors->has('costo mantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Costo Mantenimiento']) }}
             {!! $errors->first('costo mantenimiento', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('estado') }}
-            {{ Form::text('estado', $mantenimiento->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
-            {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pieza;
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PiezaController
@@ -19,7 +21,17 @@ class PiezaController extends Controller
      */
     public function index()
     {
-        $piezas = Pieza::paginate();
+        if (Gate::allows('admins')) {
+            $piezas = Pieza::paginate();
+        } elseif (Gate::allows('standard')) {
+            $idbuscar = Auth::id();
+            $vehiculo = Vehiculo::select('id', 'Marca', 'Modelo')
+            ->where('id_conductor', $idbuscar)
+            ->first();
+            $piezas = Pieza::where('id_vehiculos', $vehiculo->id)->paginate();
+        } else {
+            abort(403); // Mostrar un error 403 si el usuario no tiene permiso
+        }
         
         return view('pieza.index', compact('piezas'))
             ->with('i', (request()->input('page', 1) - 1) * $piezas->perPage());
