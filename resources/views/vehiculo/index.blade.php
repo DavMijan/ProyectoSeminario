@@ -3,6 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
+<h1>Vehiculos</h1>
 <div class="float-right">
     <a href="{{ route('vehiculos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
       {{ __('Crear Nuevo') }}
@@ -16,8 +17,8 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Id Conductor</th>
-										<th>Tipovehiculo</th>
+										<th>Conductor</th>
+										<th>Tipo vehiculo</th>
 										<th>Marca</th>
 										<th>Modelo</th>
 										<th>Año</th>

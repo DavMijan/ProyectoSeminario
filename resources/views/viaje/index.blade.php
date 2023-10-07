@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Mantenimientos</h1>
+    <h1>Viajes</h1>
     <div class="float-right">
         <a href="{{ route('viajes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
           {{ __('Crear Nuevo') }}
@@ -18,19 +18,19 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Id Conductor</th>
+										<th>Conductor</th>
 										<th>Fecha</th>
-										<th>Horasalida</th>
-										<th>Kilometrajesalida</th>
-										<th>Horallegada</th>
-										<th>Kilometrajellegada</th>
+										<th>Hora Salida</th>
+										<th>Kilometraje Salida</th>
+										<th>Hora Llegada</th>
+										<th>Kilometraje Llegada</th>
 										<th>Departamento</th>
 										<th>Municipio</th>
 										<th>Direccion</th>
-										<th>Codigofactura</th>
-										<th>Cantidadgalones</th>
-										<th>Montototal</th>
-										<th>Objetivovisita</th>
+										<th>Codigo Factura</th>
+										<th>Cantidad Galones</th>
+										<th>Monto Total</th>
+										<th>Objetivo Visita</th>
 										<th>Estado</th>
 
                                         <th></th>

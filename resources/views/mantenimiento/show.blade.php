@@ -23,23 +23,23 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Id Vehiculos:</strong>
+                            <strong>No. Vehiculos:</strong>
                             {{ $mantenimiento->id_vehiculos }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Pieza:</strong>
+                            <strong>No. Pieza:</strong>
                             {{ $mantenimiento->id_pieza }}
                         </div>
                         <div class="form-group">
-                            <strong>Tipomantenimiento:</strong>
+                            <strong>Tipo de mantenimiento:</strong>
                             {{ $mantenimiento->tipomantenimiento }}
                         </div>
                         <div class="form-group">
-                            <strong>Kil Insta O Mant:</strong>
+                            <strong>Kilometraje de :</strong>
                             {{ $mantenimiento->Kil_insta_o_mant }}
                         </div>
                         <div class="form-group">
-                            <strong>Costomantenimiento:</strong>
+                            <strong>Costo Mantenimiento:</strong>
                             {{ $mantenimiento->costomantenimiento }}
                         </div>
                         <div class="form-group">

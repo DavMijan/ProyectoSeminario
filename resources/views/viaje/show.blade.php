@@ -23,7 +23,7 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Id Conductor:</strong>
+                            <strong>Conductor:</strong>
                             {{ $viaje->id_conductor }}
                         </div>
                         <div class="form-group">
@@ -31,19 +31,19 @@
                             {{ $viaje->fecha }}
                         </div>
                         <div class="form-group">
-                            <strong>Horasalida:</strong>
+                            <strong>Hora Salida:</strong>
                             {{ $viaje->horasalida }}
                         </div>
                         <div class="form-group">
-                            <strong>Kilometrajesalida:</strong>
+                            <strong>Kilometraje Salida:</strong>
                             {{ $viaje->kilometrajesalida }}
                         </div>
                         <div class="form-group">
-                            <strong>Horallegada:</strong>
+                            <strong>Hora Llegada:</strong>
                             {{ $viaje->horallegada }}
                         </div>
                         <div class="form-group">
-                            <strong>Kilometrajellegada:</strong>
+                            <strong>Kilometraje Llegada:</strong>
                             {{ $viaje->kilometrajellegada }}
                         </div>
                         <div class="form-group">
@@ -59,19 +59,19 @@
                             {{ $viaje->direccion }}
                         </div>
                         <div class="form-group">
-                            <strong>Codigofactura:</strong>
+                            <strong>Codigo Factura:</strong>
                             {{ $viaje->codigoFactura }}
                         </div>
                         <div class="form-group">
-                            <strong>Cantidadgalones:</strong>
+                            <strong>Cantidad Galones:</strong>
                             {{ $viaje->cantidadgalones }}
                         </div>
                         <div class="form-group">
-                            <strong>Montototal:</strong>
+                            <strong>Monto Total:</strong>
                             {{ $viaje->montototal }}
                         </div>
                         <div class="form-group">
-                            <strong>Objetivovisita:</strong>
+                            <strong>Objetivo Visita:</strong>
                             {{ $viaje->objetivovisita }}
                         </div>
                         <div class="form-group">

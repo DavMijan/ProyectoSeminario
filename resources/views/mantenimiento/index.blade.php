@@ -17,11 +17,11 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Id Vehiculos</th>
-										<th>Id Pieza</th>
-										<th>Tipomantenimiento</th>
-										<th>Kil Insta O Mant</th>
-										<th>Costomantenimiento</th>
+										<th>No. Vehiculos</th>
+										<th>No. Pieza</th>
+										<th>Tipo Mantenimiento</th>
+										<th>Kilometraje de Servicio</th>
+										<th>Costo Mantenimiento</th>
 										<th>Estado</th>
 
                                         <th></th>

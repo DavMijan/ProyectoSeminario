@@ -17,8 +17,8 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Id Vehiculos</th>
-										<th>Id Pieza</th>
+										<th>No. Vehiculos</th>
+										<th>No. Pieza</th>
 										<th>Detalle</th>
 										<th>Estado</th>
 

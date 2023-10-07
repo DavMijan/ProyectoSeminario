@@ -18,12 +18,12 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Id Vehiculos</th>
+										<th>Vehiculos</th>
 										<th>Nombre</th>
-										<th>Fechainstalacion</th>
-										<th>Kil Insta O Mant</th>
-										<th>Kil Para Mant</th>
-										<th>Estadopieza</th>
+										<th>Fecha instalacion</th>
+										<th>Kilometraje de Servicio</th>
+										<th>Mantenimiento Programado Km</th>
+										<th>Estado de pieza</th>
 										<th>Estado</th>
 
                                         <th></th>

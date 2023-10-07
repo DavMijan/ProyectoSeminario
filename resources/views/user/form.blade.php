@@ -29,7 +29,7 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
         <a href="{{ route ('users.index')}}" class="btn btn-danger">Cancelar</a>
     </div>
 </div>

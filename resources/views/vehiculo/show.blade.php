@@ -23,11 +23,11 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Id Conductor:</strong>
+                            <strong>Conductor:</strong>
                             {{ $vehiculo->id_conductor }}
                         </div>
                         <div class="form-group">
-                            <strong>Tipovehiculo:</strong>
+                            <strong>Tipo vehiculo:</strong>
                             {{ $vehiculo->TipoVehiculo }}
                         </div>
                         <div class="form-group">

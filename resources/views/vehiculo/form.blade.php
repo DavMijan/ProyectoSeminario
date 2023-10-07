@@ -10,9 +10,9 @@
             </select>
         </div>
         <div class="form-group">
-            {{ Form::label('TipoVehiculo') }}
-            {{ Form::text('TipoVehiculo', $vehiculo->TipoVehiculo, ['class' => 'form-control' . ($errors->has('TipoVehiculo') ? ' is-invalid' : ''), 'placeholder' => 'Tipovehiculo']) }}
-            {!! $errors->first('TipoVehiculo', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Tipo Vehiculo') }}
+            {{ Form::text('Tipo Vehiculo', $vehiculo->TipoVehiculo, ['class' => 'form-control' . ($errors->has('Tipo Vehiculo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo vehiculo']) }}
+            {!! $errors->first('Tipo Vehiculo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Marca') }}
@@ -37,6 +37,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
     </div>
 </div>

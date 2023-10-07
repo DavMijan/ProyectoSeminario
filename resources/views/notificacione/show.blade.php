@@ -24,11 +24,11 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Id Vehiculos:</strong>
+                            <strong>No Vehiculos:</strong>
                             {{ $notificacione->id_vehiculos }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Pieza:</strong>
+                            <strong>No Pieza:</strong>
                             {{ $notificacione->id_pieza }}
                         </div>
                         <div class="form-group">

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Mantenimientos</h1>
+    <h1>Usuarios</h1>
     <div class="float-right">
         <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
           {{ __('Crear Nuevo') }}
@@ -17,7 +17,6 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Nombre</th>
 										<th>Apellido</th>
 										<th>Edad</th>

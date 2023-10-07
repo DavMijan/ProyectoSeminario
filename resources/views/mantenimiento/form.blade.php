@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('id_vehiculos') }}
-            {{ Form::text('id_vehiculos', $mantenimiento->id_vehiculos, ['class' => 'form-control' . ($errors->has('id_vehiculos') ? ' is-invalid' : ''), 'placeholder' => 'Id Vehiculos']) }}
+            {{ Form::text('id_vehiculos', $mantenimiento->id_vehiculos, ['class' => 'form-control' . ($errors->has('id_vehiculos') ? ' is-invalid' : ''), 'placeholder' => 'No. Vehiculos']) }}
             {!! $errors->first('id_vehiculos', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -12,19 +12,19 @@
             {!! $errors->first('id_pieza', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('tipomantenimiento') }}
-            {{ Form::text('tipomantenimiento', $mantenimiento->tipomantenimiento, ['class' => 'form-control' . ($errors->has('tipomantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Tipomantenimiento']) }}
+            {{ Form::label('tipo mantenimiento') }}
+            {{ Form::text('tipo mantenimiento', $mantenimiento->tipomantenimiento, ['class' => 'form-control' . ($errors->has('tipo mantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Mantenimiento']) }}
             {!! $errors->first('tipomantenimiento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Kil_insta_o_mant') }}
-            {{ Form::text('Kil_insta_o_mant', $mantenimiento->Kil_insta_o_mant, ['class' => 'form-control' . ($errors->has('Kil_insta_o_mant') ? ' is-invalid' : ''), 'placeholder' => 'Kil Insta O Mant']) }}
-            {!! $errors->first('Kil_insta_o_mant', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Kilometraje de Servicio') }}
+            {{ Form::text('Kilometraje de Servicio', $mantenimiento->Kil_insta_o_mant, ['class' => 'form-control' . ($errors->has('Kilometraje de Servicio') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje de Servicio']) }}
+            {!! $errors->first('Kilometraje de Servicio', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('costomantenimiento') }}
-            {{ Form::text('costomantenimiento', $mantenimiento->costomantenimiento, ['class' => 'form-control' . ($errors->has('costomantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Costomantenimiento']) }}
-            {!! $errors->first('costomantenimiento', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('costo mantenimiento') }}
+            {{ Form::text('costo mantenimiento', $mantenimiento->costomantenimiento, ['class' => 'form-control' . ($errors->has('costo mantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Costo Mantenimiento']) }}
+            {!! $errors->first('costo mantenimiento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('estado') }}
