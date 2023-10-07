@@ -340,12 +340,6 @@ return [
             'can'       => 'admins',
         ],
         [
-            'text'        => 'Factura Gastos',
-            'url'         => 'facturas-gastos',
-            'icon'        => 'fas fa-business-time',
-            'can'       => 'admins',
-        ],
-        [
             'text'        => 'Viajes',
             'url'         => 'viajes',
             'icon'        => 'fas fa-chart-bar',
