@@ -15,9 +15,9 @@
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('fecha instalacion') }}
-            {{ Form::text('fecha instalacion', $pieza->fechainstalacion, ['class' => 'form-control' . ($errors->has('fecha instalacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha instalacion']) }}
-            {!! $errors->first('fecha instalacion', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('fecha_instalacion', 'Fecha de Instalación') }}
+            {{ Form::date('fecha_instalacion', \Carbon\Carbon::parse($pieza->fecha_instalacion)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('fecha_instalacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha de Instalación']) }}
+            {!! $errors->first('fecha_instalacion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('kilometraje de servicio') }}
@@ -26,7 +26,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Mantenimiento Programado Km') }}
-            {{ Form::text('Mantenimiento Programado Km', $pieza->Kil_para_mant, ['class' => 'form-control' . ($errors->has('Kil_para_mant') ? ' is-invalid' : ''), 'placeholder' => 'Mantenimiento Programado Km']) }}
+            {{ Form::datetime('Mantenimiento Programado Km', $pieza->Kil_para_mant, ['class' => 'form-control' . ($errors->has('Kil_para_mant') ? ' is-invalid' : ''), 'placeholder' => 'Mantenimiento Programado Km']) }}
             {!! $errors->first('Mantenimiento Programado Kmt', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

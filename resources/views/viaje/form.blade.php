@@ -27,13 +27,13 @@
         <!-- Campo oculto para el id_conductor -->
         <input type="hidden" name="id_conductor" value="{{ $id_conductor_hidden }}">        
         <div class="form-group">
-            {{ Form::label('fecha') }}
-            {{ Form::text('fecha', $viaje->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
+            {{ Form::label('fecha', 'Fecha') }}
+            {{ Form::date('fecha', \Carbon\Carbon::parse($viaje->fecha)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
             {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('hora de salida') }}
-            {{ Form::text('hora de salida', $viaje->horasalida, ['class' => 'form-control' . ($errors->has('hora de salida') ? ' is-invalid' : ''), 'placeholder' => 'Hora Salida']) }}
+            {{ Form::label('hora de salida', 'Hora de Salida') }}
+            {{ Form::time('hora de salida', $viaje->hora_salida, ['class' => 'form-control' . ($errors->has('hora de salida') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Salida', 'step' => '60']) }}
             {!! $errors->first('hora de salida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -42,9 +42,9 @@
             {!! $errors->first('kilometraje de salida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Hora de Llegada') }}
-            {{ Form::text('Hora de Llegada', $viaje->horallegada, ['class' => 'form-control' . ($errors->has('Hora de Llegada') ? ' is-invalid' : ''), 'placeholder' => 'Hora Llegada']) }}
-            {!! $errors->first('Hora de Llegada', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('hora de llegada', 'Hora de Llegada') }}
+            {{ Form::time('hora de llegada', $viaje->horallegada, ['class' => 'form-control' . ($errors->has('hora de llegada') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Llegada', 'step' => '60']) }}
+            {!! $errors->first('hora de llegada', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('kilometraje de llegada') }}
