@@ -26,12 +26,15 @@
         </div>
         <div class="form-group">
             {{ Form::label('Año') }}
-            {{ Form::text('Año', $vehiculo->Año, ['class' => 'form-control' . ($errors->has('Año') ? ' is-invalid' : ''), 'placeholder' => 'Año']) }}
-            {!! $errors->first('Año', '<div class="invalid-feedback">:message</div>') !!}
+            <select name="Año" class="form-control">
+                @for ($year = date('Y'); $year >= 1900; $year--)
+                    <option value="{{ $year }}" {{ $year == $vehiculo->Año ? 'selected' : '' }}>{{ $year }}</option>
+                @endfor
+            </select>
         </div>
         <div class="form-group">
             {{ Form::label('Kilometraje') }}
-            {{ Form::text('Kilometraje', $vehiculo->Kilometraje, ['class' => 'form-control' . ($errors->has('Kilometraje') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje']) }}
+            {{ Form::text('Kilometraje', $vehiculo->Kilometraje, ['class' => 'form-control' . ($errors->has('Kilometraje') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje','pattern' => '^[0-9]+$', 'title' => 'Ingrese numero valido, debe ser un entero']) }}
             {!! $errors->first('Kilometraje', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

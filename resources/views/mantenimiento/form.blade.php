@@ -25,12 +25,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('Kilometraje de Servicio') }}
-            {{ Form::text('Kil_insta_o_mant', $mantenimiento->Kil_insta_o_mant, ['class' => 'form-control' . ($errors->has('Kil_insta_o_mant') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje de Servicio']) }}
+            {{ Form::text('Kil_insta_o_mant', $mantenimiento->Kil_insta_o_mant, ['class' => 'form-control' . ($errors->has('Kil_insta_o_mant') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje de Servicio', 'pattern' => '^[0-9]+$', 'title' => 'Ingrese numero valido, debe ser un entero']) }}
             {!! $errors->first('Kilometraje de Servicio', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('costo mantenimiento') }}
-            {{ Form::text('costomantenimiento', $mantenimiento->costomantenimiento, ['class' => 'form-control' . ($errors->has('costomantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Costo Mantenimiento']) }}
+            {{ Form::text('costomantenimiento', $mantenimiento->costomantenimiento, ['class' => 'form-control' . ($errors->has('costomantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Costo Mantenimiento', 'pattern' => '^[0-9]+$', 'title' => 'Ingres numero valido, debe ser un entero' ]) }}
             {!! $errors->first('costomantenimiento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

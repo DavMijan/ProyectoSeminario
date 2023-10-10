@@ -3,27 +3,27 @@
         
         <div class="form-group">
             {{ Form::label('nombre') }}
-            {{ Form::text('nombre', $user->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {{ Form::text('nombre', $user->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre', 'pattern' => '^[A-Za-z]+$', 'title' => 'Solo se permiten letras']) }}
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('apellido') }}
-            {{ Form::text('apellido', $user->apellido, ['class' => 'form-control' . ($errors->has('apellido') ? ' is-invalid' : ''), 'placeholder' => 'Apellido']) }}
+            {{ Form::text('apellido', $user->apellido, ['class' => 'form-control' . ($errors->has('apellido') ? ' is-invalid' : ''), 'placeholder' => 'Apellido', 'pattern' => '^[A-Za-z]+$', 'title' => 'Solo se permiten letras']) }}
             {!! $errors->first('apellido', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('edad') }}
-            {{ Form::text('edad', $user->edad, ['class' => 'form-control' . ($errors->has('edad') ? ' is-invalid' : ''), 'placeholder' => 'Edad']) }}
+            {{ Form::text('edad', $user->edad, ['class' => 'form-control' . ($errors->has('edad') ? ' is-invalid' : ''), 'placeholder' => 'Edad', 'pattern' => '^(0?[1-9]|[1-9][0-9])$', 'title' => 'Solo se permiten numeros']) }}
             {!! $errors->first('edad', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('email') }}
-            {{ Form::text('email', $user->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
+            {{ Form::text('email', $user->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email', 'pattern' => '^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$']) }}
             {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('clave') }}
-            {{ Form::text('password', $user->password, ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => 'Clave']) }}
+            {{ Form::text('password', $user->password, ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => 'Clave', 'pattern' => '^(?=.*[A-Z])(?=.*\d).{8,}$', 'title' => 'La contraseña debe tener 8 caracteres, una mayúscula y números']) }}
             {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
