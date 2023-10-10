@@ -462,9 +462,11 @@ class ViajeController extends Controller
         $viaje = Viaje::find($id);
         $viaje->id_conductor = Auth::id(); // Establece el ID del conductor autenticado
         $users = User::all(['id', 'nombre', 'apellido']); // Obtén la lista de todos los conductores con nombre y apellido
-        
+        $horaLlegada = \Carbon\Carbon::parse($viaje->horallegada)->format('H:i');
+
         return view('viaje.show', compact('viaje','users'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -488,6 +490,7 @@ class ViajeController extends Controller
 
         return view('viaje.edit', compact('viaje', 'users','id_conductor_hidden','departamentos' ));
     }
+    
 
     /**
      * Update the specified resource in storage.
