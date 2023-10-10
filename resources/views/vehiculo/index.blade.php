@@ -33,13 +33,19 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $vehiculo->id_conductor }}</td>
+											<td>{{ $vehiculo->user->nombre }} {{ $vehiculo->user->apellido }}</td>
 											<td>{{ $vehiculo->TipoVehiculo }}</td>
 											<td>{{ $vehiculo->Marca }}</td>
 											<td>{{ $vehiculo->Modelo }}</td>
 											<td>{{ $vehiculo->Año }}</td>
 											<td>{{ $vehiculo->Kilometraje }}</td>
-											<td>{{ $vehiculo->estado }}</td>
+											<td>
+                                                @if ($vehiculo->estado == 1)
+                                                    Activo
+                                                @else
+                                                    Inactivo
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('vehiculos.destroy',$vehiculo->id) }}" method="POST">
@@ -47,7 +53,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('vehiculos.edit',$vehiculo->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Activar/Desactivar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

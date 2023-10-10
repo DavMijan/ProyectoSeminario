@@ -65,6 +65,11 @@ class Viaje extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'id_conductor');
     }
+
+    public function vehiculo()
+    {
+        return $this->hasOneThrough(Vehiculo::class, User::class, 'id', 'id_conductor', 'id_conductor');
+    }
     
 
 }

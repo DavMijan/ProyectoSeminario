@@ -103,9 +103,23 @@ class VehiculoController extends Controller
      */
     public function destroy($id)
     {
-        $vehiculo = Vehiculo::find($id)->delete();
-
-        return redirect()->route('vehiculos.index')
-            ->with('success', 'Vehiculo deleted successfully');
+        // Buscar el vehículo por su ID
+        $vehiculo = Vehiculo::find($id);
+    
+        // Verificar si se encontró el vehículo
+        if (!$vehiculo) {
+            return redirect()->route('vehiculos.index')->with('error', 'Vehículo no encontrado.');
+        }
+    
+        // Cambiar el estado según el estado actual del vehículo
+        $vehiculo->estado = $vehiculo->estado == 0 ? 1 : 0;
+        $vehiculo->save();
+    
+        $message = $vehiculo->estado == 0 ? 'Vehículo marcado como inactivo.' : 'Vehículo marcado como activo.';
+    
+        return redirect()->route('vehiculos.index')->with('success', $message);
     }
+    
+
+    
 }

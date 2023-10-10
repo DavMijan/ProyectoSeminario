@@ -19,6 +19,7 @@
                                         <th>No</th>
                                         
 										<th>Conductor</th>
+                                        <th>Vehiculo</th>
 										<th>Fecha</th>
 										<th>Hora Salida</th>
 										<th>Kilometraje Salida</th>
@@ -31,7 +32,6 @@
 										<th>Cantidad Galones</th>
 										<th>Monto Total</th>
 										<th>Objetivo Visita</th>
-										<th>Estado</th>
 
                                         <th></th>
                                     </tr>
@@ -41,7 +41,14 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $viaje->id_conductor }}</td>
+											<td>{{ $viaje->user->nombre }} {{ $viaje->user->apellido }}</td>
+                                            <td>
+                                                @if ($viaje->vehiculo)
+                                                    {{ $viaje->vehiculo->Marca }} {{ $viaje->vehiculo->Modelo }}
+                                                @else
+                                                    No hay vehículo asociado
+                                                @endif
+                                            </td>
 											<td>{{ $viaje->fecha }}</td>
 											<td>{{ $viaje->horasalida }}</td>
 											<td>{{ $viaje->kilometrajesalida }}</td>
@@ -54,15 +61,10 @@
 											<td>{{ $viaje->cantidadgalones }}</td>
 											<td>{{ $viaje->montototal }}</td>
 											<td>{{ $viaje->objetivovisita }}</td>
-											<td>{{ $viaje->estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('viajes.destroy',$viaje->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

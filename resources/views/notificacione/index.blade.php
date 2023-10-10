@@ -17,10 +17,9 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>No. Vehiculos</th>
-										<th>No. Pieza</th>
+										<th>Vehiculo</th>
+										<th>Pieza</th>
 										<th>Detalle</th>
-										<th>Estado</th>
 
                                         <th></th>
                                     </tr>
@@ -30,18 +29,13 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $notificacione->id_vehiculos }}</td>
-											<td>{{ $notificacione->id_pieza }}</td>
+                                            <td>{{ $notificacione->vehiculo->Marca }} {{ $notificacione->vehiculo->Modelo }}</td>
+											<td>{{ $notificacione->pieza->nombre }}</td>
 											<td>{{ $notificacione->detalle }}</td>
-											<td>{{ $notificacione->estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('notificaciones.destroy',$notificacione->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('notificaciones.show',$notificacione->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('notificaciones.edit',$notificacione->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -35,7 +35,13 @@
 											<td>{{ $user->apellido }}</td>
 											<td>{{ $user->edad }}</td>
 											<td>{{ $user->email }}</td>
-											<td>{{ $user->estado }}</td>
+                                            <td>
+                                                @if ($user->estado == 1)
+                                                    Activo
+                                                @else
+                                                    Inactivo
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('users.destroy',$user->id) }}" method="POST">

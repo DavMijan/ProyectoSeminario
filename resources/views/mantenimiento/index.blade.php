@@ -17,7 +17,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>No. Vehiculos</th>
+										<th>Vehiculo</th>
 										<th>No. Pieza</th>
 										<th>Tipo Mantenimiento</th>
 										<th>Kilometraje de Servicio</th>
@@ -31,9 +31,8 @@
                                     @foreach ($mantenimientos as $mantenimiento)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $mantenimiento->id_vehiculos }}</td>
-											<td>{{ $mantenimiento->id_pieza }}</td>
+                                            <td>{{ $mantenimiento->vehiculo->Marca }} {{ $mantenimiento->vehiculo->Modelo }}</td>
+											<td>{{ $mantenimiento->pieza->nombre }}</td>
 											<td>{{ $mantenimiento->tipomantenimiento }}</td>
 											<td>{{ $mantenimiento->Kil_insta_o_mant }}</td>
 											<td>{{ $mantenimiento->costomantenimiento }}</td>
@@ -42,10 +41,6 @@
                                             <td>
                                                 <form action="{{ route('mantenimientos.destroy',$mantenimiento->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('mantenimientos.show',$mantenimiento->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('mantenimientos.edit',$mantenimiento->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
