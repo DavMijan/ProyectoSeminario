@@ -33,7 +33,13 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $pieza->vehiculo->Marca }} {{ $pieza->vehiculo->Modelo }}</td>
+											<td>
+                                                @if ($pieza->vehiculo)
+                                                {{ $pieza->vehiculo->Marca }} {{ $pieza->vehiculo->Modelo }}
+                                                @else
+                                                    No hay vehiculo asociado
+                                                @endif
+                                            </td>
 											<td>{{ $pieza->nombre }}</td>
 											<td>{{ $pieza->fechainstalacion }}</td>
 											<td>{{ $pieza->Kil_insta_o_mant }}</td>

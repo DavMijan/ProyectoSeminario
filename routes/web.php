@@ -26,7 +26,7 @@ Route::middleware([
 });
 
 Auth::routes();
-
+Route::get('viajes/pdf', [App\Http\Controllers\ViajeController::class, 'pdf'])->name('viajes.pdf');
 //Users
 Route::resource('users', App\Http\Controllers\UserController::class);
 //Vehiculos

@@ -11,6 +11,7 @@ use App\Models\Notificacione;
 use Illuminate\Support\Facades\DB;
 use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Gate;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class ViajeController
@@ -39,6 +40,21 @@ class ViajeController extends Controller
 
         return view('viaje.index', compact('viajes'))
             ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());
+    }
+
+    public function pdf()
+    {
+        if (Gate::allows('admins')) {
+            $viajes = Viaje::paginate();
+        } elseif (Gate::allows('standard')) {
+            $idbuscar = Auth::id();
+            $viajes  = Viaje::where('id_conductor', Auth::id())->paginate();
+        } else {
+            abort(403); // Mostrar un error 403 si el usuario no tiene permiso
+        }
+        $pdf = Pdf::loadView('viaje.pdf', compact('viajes'));
+        return $pdf->setPaper('a3','landscape')->stream();
+        
     }
 
     /**

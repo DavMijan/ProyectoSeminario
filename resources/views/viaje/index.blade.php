@@ -8,6 +8,9 @@
         <a href="{{ route('viajes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
           {{ __('Crear Nuevo') }}
         </a>
+        <a href="{{ route('viajes.pdf') }}" class="btn btn-success" target="_blank">
+            {{ __('PDF') }}
+          </a>
       </div>
 @stop
 
@@ -41,7 +44,13 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $viaje->user->nombre }} {{ $viaje->user->apellido }}</td>
+											<td>
+                                                @if ($viaje->user)
+                                                {{ $viaje->user->nombre }} {{ $viaje->user->apellido }}
+                                                @else
+                                                    No hay usuario asociado
+                                                @endif
+                                            </td>
                                             <td>
                                                 @if ($viaje->vehiculo)
                                                     {{ $viaje->vehiculo->Marca }} {{ $viaje->vehiculo->Modelo }}

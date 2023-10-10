@@ -33,7 +33,13 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $vehiculo->user->nombre }} {{ $vehiculo->user->apellido }}</td>
+											<td>
+                                                @if ($vehiculo->user)
+                                                {{ $vehiculo->user->nombre }} {{ $vehiculo->user->apellido }}
+                                                @else
+                                                    No hay usuario asociado
+                                                @endif
+                                            </td>
 											<td>{{ $vehiculo->TipoVehiculo }}</td>
 											<td>{{ $vehiculo->Marca }}</td>
 											<td>{{ $vehiculo->Modelo }}</td>

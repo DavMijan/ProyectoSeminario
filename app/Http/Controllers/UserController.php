@@ -106,9 +106,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
+        $user = User::find($id);
 
-        return redirect()->route('users.index')
-            ->with('success', 'User deleted successfully');
+        if (!$user) {
+            return redirect()->route('user.index')->with('error', 'Usuario no encontrado.');
+        }
+    
+        $user->estado = $user->estado == 0 ? 1 : 0;
+        $user->save();
+    
+        $message = $user->estado == 0 ? 'Usuario marcado como inactivo.' : 'Usuario marcado como activo.';
+    
+        return redirect()->route('users.index')->with('success', $message);
     }
 }

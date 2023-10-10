@@ -388,12 +388,6 @@ return [
             'icon'        => 'fas fa-tools',
             'can'       => 'standard',
         ],
-        ['header' => 'CONFIGUACION CUENTA'],
-        [
-            'text' => 'Perfil',
-            'url'  => 'profile/show',
-            'icon' => 'fas fa-fw fa-user',
-        ],
 
         /* [
             'text'    => 'multilevel',

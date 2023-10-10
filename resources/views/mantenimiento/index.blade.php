@@ -18,7 +18,7 @@
                                         <th>No</th>
                                         
 										<th>Vehiculo</th>
-										<th>No. Pieza</th>
+										<th>Pieza</th>
 										<th>Tipo Mantenimiento</th>
 										<th>Kilometraje de Servicio</th>
 										<th>Costo Mantenimiento</th>
@@ -31,7 +31,13 @@
                                     @foreach ($mantenimientos as $mantenimiento)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $mantenimiento->vehiculo->Marca }} {{ $mantenimiento->vehiculo->Modelo }}</td>
+                                            <td>
+                                                @if ($mantenimiento->vehiculo)
+                                                {{ $mantenimiento->vehiculo->Marca }} {{ $mantenimiento->vehiculo->Modelo }}
+                                                @else
+                                                    No hay Vehiculo asociado
+                                                @endif
+                                            </td>
 											<td>{{ $mantenimiento->pieza->nombre }}</td>
 											<td>{{ $mantenimiento->tipomantenimiento }}</td>
 											<td>{{ $mantenimiento->Kil_insta_o_mant }}</td>

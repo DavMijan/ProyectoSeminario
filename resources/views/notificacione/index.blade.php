@@ -29,8 +29,20 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-                                            <td>{{ $notificacione->vehiculo->Marca }} {{ $notificacione->vehiculo->Modelo }}</td>
-											<td>{{ $notificacione->pieza->nombre }}</td>
+                                            <td>
+                                                @if ($notificacione->vehiculo)
+                                                {{ $notificacione->vehiculo->Marca }} {{ $notificacione->vehiculo->Modelo }}
+                                                @else
+                                                    No hay vehiculo asociado
+                                                @endif
+                                            </td>
+											<td>
+                                                @if ($notificacione->pieza)
+                                                {{ $notificacione->pieza->nombre }}
+                                                @else
+                                                    No hay pieza asociado
+                                                @endif
+                                            </td>
 											<td>{{ $notificacione->detalle }}</td>
 
                                             <td>
