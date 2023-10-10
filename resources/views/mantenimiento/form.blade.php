@@ -20,18 +20,18 @@
         </div>
         <div class="form-group">
             {{ Form::label('tipo mantenimiento') }}
-            {{ Form::text('tipo mantenimiento', $mantenimiento->tipomantenimiento, ['class' => 'form-control' . ($errors->has('tipo mantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Mantenimiento']) }}
+            {{ Form::text('tipomantenimiento', $mantenimiento->tipomantenimiento, ['class' => 'form-control' . ($errors->has('tipomantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Mantenimiento']) }}
             {!! $errors->first('tipomantenimiento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Kilometraje de Servicio') }}
-            {{ Form::text('Kilometraje de Servicio', $mantenimiento->Kil_insta_o_mant, ['class' => 'form-control' . ($errors->has('Kilometraje de Servicio') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje de Servicio']) }}
+            {{ Form::text('Kil_insta_o_mant', $mantenimiento->Kil_insta_o_mant, ['class' => 'form-control' . ($errors->has('Kil_insta_o_mant') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje de Servicio']) }}
             {!! $errors->first('Kilometraje de Servicio', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('costo mantenimiento') }}
-            {{ Form::text('costo mantenimiento', $mantenimiento->costomantenimiento, ['class' => 'form-control' . ($errors->has('costo mantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Costo Mantenimiento']) }}
-            {!! $errors->first('costo mantenimiento', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('costomantenimiento', $mantenimiento->costomantenimiento, ['class' => 'form-control' . ($errors->has('costomantenimiento') ? ' is-invalid' : ''), 'placeholder' => 'Costo Mantenimiento']) }}
+            {!! $errors->first('costomantenimiento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>

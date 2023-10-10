@@ -3,13 +3,13 @@
         
         <div class="form-group">
             {{ Form::label('No. vehiculos') }}
-            {{ Form::text('No. vehiculos', $notificacione->id_vehiculos, ['class' => 'form-control' . ($errors->has('No. vehiculos') ? ' is-invalid' : ''), 'placeholder' => 'No. Vehiculos']) }}
-            {!! $errors->first('No. vehiculos', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('id_vehiculos', $notificacione->id_vehiculos, ['class' => 'form-control' . ($errors->has('id_vehiculos') ? ' is-invalid' : ''), 'placeholder' => 'No. Vehiculos']) }}
+            {!! $errors->first('id_vehiculos', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('No. Pieza') }}
-            {{ Form::text('No. Pieza', $notificacione->id_pieza, ['class' => 'form-control' . ($errors->has('No. Pieza') ? ' is-invalid' : ''), 'placeholder' => 'No. Pieza']) }}
-            {!! $errors->first('No. Pieza', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('id_pieza', $notificacione->id_pieza, ['class' => 'form-control' . ($errors->has('No. Pieza') ? ' is-invalid' : ''), 'placeholder' => 'id_pieza']) }}
+            {!! $errors->first('id_pieza', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('detalle') }}

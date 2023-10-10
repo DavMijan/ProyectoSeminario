@@ -28,28 +28,28 @@
         <input type="hidden" name="id_conductor" value="{{ $id_conductor_hidden }}">        
         <div class="form-group">
             {{ Form::label('fecha', 'Fecha') }}
-            {{ Form::date('fecha', \Carbon\Carbon::parse($viaje->fecha)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
+            {{ Form::date('fecha', $viaje->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
             {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('hora de salida', 'Hora de Salida') }}
-            {{ Form::time('hora de salida', $viaje->hora_salida, ['class' => 'form-control' . ($errors->has('hora de salida') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Salida', 'step' => '60']) }}
-            {!! $errors->first('hora de salida', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::time('horasalida', $viaje->horasalida, ['class' => 'form-control' . ($errors->has('horasalida') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Salida']) }}
+            {!! $errors->first('horasalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('kilometraje de salida') }}
-            {{ Form::text('kilometraje de salida', $viaje->kilometrajesalida, ['class' => 'form-control' . ($errors->has('kilometraje de salida') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Salida']) }}
-            {!! $errors->first('kilometraje de salida', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('kilometrajesalida', $viaje->kilometrajesalida, ['class' => 'form-control' . ($errors->has('kilometrajesalida') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Salida']) }}
+            {!! $errors->first('kilometrajesalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('hora de llegada', 'Hora de Llegada') }}
-            {{ Form::time('hora de llegada', $viaje->horallegada, ['class' => 'form-control' . ($errors->has('hora de llegada') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Llegada', 'step' => '60']) }}
-            {!! $errors->first('hora de llegada', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+            {{ Form::label('Hora de Llegada', 'Hora de Llegada') }}
+            {{ Form::time('horallegada', $viaje->horallegada, ['class' => 'form-control' . ($errors->has('horallegada') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Llegada', 'pattern' => '^\d{2}:\d{2}$', 'title' => 'Ingrese la hora en formato HH:mm']) }}
+            {!! $errors->first('horallegada', '<div class="invalid-feedback">:message</div>') !!}
+        </div>        
         <div class="form-group">
             {{ Form::label('kilometraje de llegada') }}
-            {{ Form::text('kilometraje de llegada', $viaje->kilometrajellegada, ['class' => 'form-control' . ($errors->has('kilometraje de llegada') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Llegada']) }}
-            {!! $errors->first('kilometraje de llegada', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('kilometrajellegada', $viaje->kilometrajellegada, ['class' => 'form-control' . ($errors->has('kilometrajellegada') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Llegada']) }}
+            {!! $errors->first('kilometrajellegada', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             <label for="departamento">Departamento:</label>
@@ -77,22 +77,22 @@
         </div>
         <div class="form-group">
             {{ Form::label('codigo de Factura') }}
-            {{ Form::text('codigo de Factura', $viaje->codigoFactura, ['class' => 'form-control' . ($errors->has('codigo de Factura') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Factura']) }}
-            {!! $errors->first('codigo de Factura', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('codigoFactura', $viaje->codigoFactura, ['class' => 'form-control' . ($errors->has('codigoFactura') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Factura']) }}
+            {!! $errors->first('codigoFactura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('cantidad de galones') }}
-            {{ Form::text('cantidad de galones', $viaje->cantidadgalones, ['class' => 'form-control' . ($errors->has('cantidad galones') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad Galones']) }}
+            {{ Form::text('cantidadgalones', $viaje->cantidadgalones, ['class' => 'form-control' . ($errors->has('cantidadgalones') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad Galones']) }}
             {!! $errors->first('cantidadgalones', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('monto total') }}
-            {{ Form::text('monto total', $viaje->montototal, ['class' => 'form-control' . ($errors->has('monto total') ? ' is-invalid' : ''), 'placeholder' => 'Monto Total']) }}
-            {!! $errors->first('monto total', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('montototal', $viaje->montototal, ['class' => 'form-control' . ($errors->has('montototal') ? ' is-invalid' : ''), 'placeholder' => 'Monto Total']) }}
+            {!! $errors->first('montototal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('objetivo visita') }}
-            {{ Form::text('objetivo visita', $viaje->objetivovisita, ['class' => 'form-control' . ($errors->has('objetivo visita') ? ' is-invalid' : ''), 'placeholder' => 'Objetivo Visita']) }}
+            {{ Form::label('objetivovisita') }}
+            {{ Form::text('objetivovisita', $viaje->objetivovisita, ['class' => 'form-control' . ($errors->has('objetivovisita') ? ' is-invalid' : ''), 'placeholder' => 'Objetivo Visita']) }}
             {!! $errors->first('objetivo visita', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
