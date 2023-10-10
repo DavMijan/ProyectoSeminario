@@ -77,17 +77,17 @@
         </div>
         <div class="form-group">
             {{ Form::label('codigo de Factura') }}
-            {{ Form::text('codigoFactura', $viaje->codigoFactura, ['class' => 'form-control' . ($errors->has('codigoFactura') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Factura']) }}
+            {{ Form::text('codigoFactura', $viaje->codigoFactura, ['class' => 'form-control' . ($errors->has('codigoFactura') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Factura', 'pattern' => '^[0-9]+$', 'title' => 'Ingres numero valido, debe ser un entero' ]) }}
             {!! $errors->first('codigoFactura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('cantidad de galones') }}
-            {{ Form::text('cantidadgalones', $viaje->cantidadgalones, ['class' => 'form-control' . ($errors->has('cantidadgalones') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad Galones']) }}
+            {{ Form::text('cantidadgalones', $viaje->cantidadgalones, ['class' => 'form-control' . ($errors->has('cantidadgalones') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad Galones',  'pattern' => '^-?\d+(\.\d+)?$','title' => 'Ingrese un número válido, puede ser entero o decimal (utilice punto como separador decimal)']) }}
             {!! $errors->first('cantidadgalones', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('monto total') }}
-            {{ Form::text('montototal', $viaje->montototal, ['class' => 'form-control' . ($errors->has('montototal') ? ' is-invalid' : ''), 'placeholder' => 'Monto Total']) }}
+            {{ Form::text('montototal', $viaje->montototal, ['class' => 'form-control' . ($errors->has('montototal') ? ' is-invalid' : ''), 'placeholder' => 'Monto Total', 'pattern' => '^-?\d+(\.\d+)?$','title' => 'Ingrese un número válido, puede ser entero o decimal (utilice punto como separador decimal)']) }}
             {!! $errors->first('montototal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
