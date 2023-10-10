@@ -16,9 +16,21 @@
     <div class="icon">
       <i class="fas fa-car-alt"></i>
     </div>
-    <a href="#" class="small-box-footer">
-      More info <i class="fas fa-arrow-circle-right"></i>
+    <a href="vehiculos" class="small-box-footer">
+      Mostrar <i class="fas fa-arrow-circle-right"></i>
     </a>
+</div>
+<div class="small-box bg-primary" style="width: 300px; height: 150px;">
+  <div class="inner">
+    <h3>Usuarios</h3>
+    <p>Detalles</p>
+  </div>
+  <div class="icon">
+    <i class="fas fa-fw fa-user"></i>
+  </div>
+  <a href="users" class="small-box-footer">
+    Mostrar <i class="fas fa-fw fa-user"></i>
+  </a>
 </div>
 @endrole
 @role('stand')

@@ -24,7 +24,6 @@
 										<th>Kilometraje de Servicio</th>
 										<th>Mantenimiento Programado Km</th>
 										<th>Estado de pieza</th>
-										<th>Estado</th>
 
                                         <th></th>
                                     </tr>
@@ -34,21 +33,17 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $pieza->id_vehiculos }}</td>
+											<td>{{ $pieza->vehiculo->Marca }} {{ $pieza->vehiculo->Modelo }}</td>
 											<td>{{ $pieza->nombre }}</td>
 											<td>{{ $pieza->fechainstalacion }}</td>
 											<td>{{ $pieza->Kil_insta_o_mant }}</td>
 											<td>{{ $pieza->Kil_para_mant }}</td>
 											<td>{{ $pieza->estadopieza }}</td>
-											<td>{{ $pieza->estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('piezas.destroy',$pieza->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('piezas.edit',$pieza->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    
                                                 </form>
                                             </td>
                                         </tr>

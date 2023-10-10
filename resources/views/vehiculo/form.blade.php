@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Tipo Vehiculo') }}
-            {{ Form::text('TipoVehiculo', $vehiculo->TipoVehiculo, ['class' => 'form-control' . ($errors->has('TipoVehiculo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo vehiculo']) }}
+            {{ Form::text('TipoVehiculo', $vehiculo->TipoVehiculo, ['class' => 'form-control' . ($errors->has('TipoVehiculo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Vehiculo']) }}
             {!! $errors->first('TipoVehiculo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
