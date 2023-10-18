@@ -11,17 +11,17 @@
         </div>
         <div class="form-group">
             {{ Form::label('Tipo Vehiculo') }}
-            {{ Form::text('TipoVehiculo', $vehiculo->TipoVehiculo, ['class' => 'form-control' . ($errors->has('TipoVehiculo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Vehiculo']) }}
+            {{ Form::text('TipoVehiculo', $vehiculo->TipoVehiculo, ['class' => 'form-control' . ($errors->has('TipoVehiculo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Vehiculo', 'required' => 'required']) }}
             {!! $errors->first('TipoVehiculo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Marca') }}
-            {{ Form::text('Marca', $vehiculo->Marca, ['class' => 'form-control' . ($errors->has('Marca') ? ' is-invalid' : ''), 'placeholder' => 'Marca']) }}
+            {{ Form::text('Marca', $vehiculo->Marca, ['class' => 'form-control' . ($errors->has('Marca') ? ' is-invalid' : ''), 'placeholder' => 'Marca', 'required' => 'required']) }}
             {!! $errors->first('Marca', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Modelo') }}
-            {{ Form::text('Modelo', $vehiculo->Modelo, ['class' => 'form-control' . ($errors->has('Modelo') ? ' is-invalid' : ''), 'placeholder' => 'Modelo']) }}
+            {{ Form::text('Modelo', $vehiculo->Modelo, ['class' => 'form-control' . ($errors->has('Modelo') ? ' is-invalid' : ''), 'placeholder' => 'Modelo', 'required' => 'required']) }}
             {!! $errors->first('Modelo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Kilometraje') }}
-            {{ Form::text('Kilometraje', $vehiculo->Kilometraje, ['class' => 'form-control' . ($errors->has('Kilometraje') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje','pattern' => '^[0-9]+$', 'title' => 'Ingrese numero valido, debe ser un entero']) }}
+            {{ Form::text('Kilometraje', $vehiculo->Kilometraje, ['class' => 'form-control' . ($errors->has('Kilometraje') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje','pattern' => '^[0-9]+$', 'title' => 'Ingrese numero valido, debe ser positivo y no debe contener letras', 'required' => 'required']) }}
             {!! $errors->first('Kilometraje', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

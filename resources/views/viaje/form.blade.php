@@ -28,32 +28,32 @@
         <input type="hidden" name="id_conductor" value="{{ $id_conductor_hidden }}">        
         <div class="form-group">
             {{ Form::label('fecha', 'Fecha') }}
-            {{ Form::date('fecha', $viaje->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
+            {{ Form::date('fecha', $viaje->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha', 'required' => 'required']) }}
             {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('hora de salida', 'Hora de Salida') }}
-            {{ Form::time('horasalida', $viaje->horasalida, ['class' => 'form-control' . ($errors->has('horasalida') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Salida']) }}
+            {{ Form::time('horasalida', $viaje->horasalida, ['class' => 'form-control' . ($errors->has('horasalida') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Salida', 'required' => 'required']) }}
             {!! $errors->first('horasalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('kilometraje de salida') }}
-            {{ Form::text('kilometrajesalida', $viaje->kilometrajesalida, ['class' => 'form-control' . ($errors->has('kilometrajesalida') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Salida']) }}
+            {{ Form::text('kilometrajesalida', $viaje->kilometrajesalida, ['class' => 'form-control' . ($errors->has('kilometrajesalida') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Salida', 'pattern' => '^[1-9]\d*$', 'title' => 'Debe ser un número positivo y no debe contener letras']) }}
             {!! $errors->first('kilometrajesalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Hora de Llegada', 'Hora de Llegada') }}
-            {{ Form::time('horallegada', $viaje->horallegada, ['class' => 'form-control' . ($errors->has('horallegada') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Llegada', 'pattern' => '^\d{2}:\d{2}$', 'title' => 'Ingrese la hora en formato HH:mm']) }}
+            {{ Form::time('horallegada', $viaje->horallegada, ['class' => 'form-control' . ($errors->has('horallegada') ? ' is-invalid' : ''), 'placeholder' => 'Hora de Llegada', 'pattern' => '^\d{2}:\d{2}$', 'title' => 'Ingrese la hora en formato HH:mm', 'required' => 'required']) }}
             {!! $errors->first('horallegada', '<div class="invalid-feedback">:message</div>') !!}
         </div>        
         <div class="form-group">
             {{ Form::label('kilometraje de llegada') }}
-            {{ Form::text('kilometrajellegada', $viaje->kilometrajellegada, ['class' => 'form-control' . ($errors->has('kilometrajellegada') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Llegada']) }}
+            {{ Form::text('kilometrajellegada', $viaje->kilometrajellegada, ['class' => 'form-control' . ($errors->has('kilometrajellegada') ? ' is-invalid' : ''), 'placeholder' => 'Kilometraje Llegada', 'pattern' => '^[1-9]\d*$', 'title' => 'Debe ser un número positivo sin letras', 'required' => 'required']) }}
             {!! $errors->first('kilometrajellegada', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             <label for="departamento">Departamento:</label>
-            <select name="departamento" id="departamento" class="form-control">
+            <select name="departamento" id="departamento" class="form-control" required>
                 <option value="">Selecciona un departamento</option>
                 @foreach ($departamentos as $departamento => $municipios)
                     <option value="{{ $departamento }}">{{ $departamento }}</option>
@@ -63,7 +63,7 @@
         
         <div class="form-group">
             <label for="municipio">Municipio:</label>
-            <select name="municipio" id="municipio" class="form-control">
+            <select name="municipio" id="municipio" class="form-control" required>
                 <option value="">Selecciona un Municipio</option>
                 <!-- Los municipios se cargarán dinámicamente aquí -->
             </select>
@@ -72,27 +72,27 @@
         
         <div class="form-group">
             {{ Form::label('direccion') }}
-            {{ Form::text('direccion', $viaje->direccion, ['class' => 'form-control' . ($errors->has('direccion') ? ' is-invalid' : ''), 'placeholder' => 'Direccion']) }}
+            {{ Form::text('direccion', $viaje->direccion, ['class' => 'form-control' . ($errors->has('direccion') ? ' is-invalid' : ''), 'placeholder' => 'Direccion', 'required' => 'required']) }}
             {!! $errors->first('direccion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('codigo de Factura') }}
-            {{ Form::text('codigoFactura', $viaje->codigoFactura, ['class' => 'form-control' . ($errors->has('codigoFactura') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Factura', 'pattern' => '^[0-9]+$', 'title' => 'Ingres numero valido, debe ser un entero' ]) }}
+            {{ Form::text('codigoFactura', $viaje->codigoFactura, ['class' => 'form-control' . ($errors->has('codigoFactura') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Factura', 'pattern' => '^[0-9]+$', 'title' => 'Ingrese un numero valido, debe ser un entero', 'required' => 'required']) }}
             {!! $errors->first('codigoFactura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('cantidad de galones') }}
-            {{ Form::text('cantidadgalones', $viaje->cantidadgalones, ['class' => 'form-control' . ($errors->has('cantidadgalones') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad Galones',  'pattern' => '^-?\d+(\.\d+)?$','title' => 'Ingrese un número válido, puede ser entero o decimal (utilice punto como separador decimal)']) }}
+            {{ Form::text('cantidadgalones', $viaje->cantidadgalones, ['class' => 'form-control' . ($errors->has('cantidadgalones') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad Galones',  'pattern' => '^\d+(\.\d+)?$','title' => 'Ingrese un número válido, puede ser entero o decimal, debe ser positivo (utilice punto como separador si es decimal)', 'required' => 'required']) }}
             {!! $errors->first('cantidadgalones', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('monto total') }}
-            {{ Form::text('montototal', $viaje->montototal, ['class' => 'form-control' . ($errors->has('montototal') ? ' is-invalid' : ''), 'placeholder' => 'Monto Total', 'pattern' => '^-?\d+(\.\d+)?$','title' => 'Ingrese un número válido, puede ser entero o decimal (utilice punto como separador decimal)']) }}
+            {{ Form::text('montototal', $viaje->montototal, ['class' => 'form-control' . ($errors->has('montototal') ? ' is-invalid' : ''), 'placeholder' => 'Monto Total', 'pattern' => '^\d+(\.\d+)?$','title' => 'Ingrese un número válido, puede ser entero o decimal, debe ser positivo(utilice punto como separador si es decimal)', 'required' => 'required']) }}
             {!! $errors->first('montototal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('objetivovisita') }}
-            {{ Form::text('objetivovisita', $viaje->objetivovisita, ['class' => 'form-control' . ($errors->has('objetivovisita') ? ' is-invalid' : ''), 'placeholder' => 'Objetivo Visita']) }}
+            {{ Form::text('objetivovisita', $viaje->objetivovisita, ['class' => 'form-control' . ($errors->has('objetivovisita') ? ' is-invalid' : ''), 'placeholder' => 'Objetivo Visita','required' => 'required']) }}
             {!! $errors->first('objetivo visita', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
