@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('home');
+// });
 Route::get('/', function () {
-    return view('auth.login');
-});
+    return view('home');
+})->middleware('redirect.not.authenticated');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::middleware([
     'auth:sanctum',
     'verified',
@@ -42,4 +48,4 @@ Route::resource('mantenimientos', App\Http\Controllers\MantenimientoController::
 Route::resource('notificaciones', App\Http\Controllers\NotificacioneController::class);
 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

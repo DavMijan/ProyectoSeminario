@@ -4,8 +4,10 @@
         <div class="form-group">
             <label for="id_conductor">Conductor:</label>
             <select name="id_conductor" id="id_conductor" class="form-control">
-                @foreach ($users as $users)
-                    <option value="{{ $users->id }}">{{ $users->nombre }} {{ $users->apellido }}</option>
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}" {{ $user->id == $vehiculo->id_conductor ? 'selected' : '' }}>
+                        {{ $user->nombre }} {{ $user->apellido }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -41,5 +43,6 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
+        <a href="{{ route ('vehiculos.index')}}" class="btn btn-danger">Cancelar</a>
     </div>
 </div>

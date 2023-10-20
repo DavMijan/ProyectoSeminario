@@ -2,9 +2,8 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('id_vehiculos') }}
-            {{ Form::text('id_vehiculos', $mantenimiento->id_vehiculos, ['class' => 'form-control' . ($errors->has('id_vehiculos') ? ' is-invalid' : ''), 'placeholder' => 'Id Vehiculos']) }}
-            {!! $errors->first('id_vehiculos', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('marca_modelo', 'Vehiculo') }}
+            <input type="text" class="form-control" value="{{ $vehiculo->Marca . ' ' . $vehiculo->Modelo }}" readonly>
         </div>
         
         <!-- Campo oculto para el id_conductor -->
@@ -37,5 +36,6 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
+        <a href="{{ route ('mantenimientos.index')}}" class="btn btn-danger">Cancelar</a>
     </div>
 </div>

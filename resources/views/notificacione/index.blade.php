@@ -4,11 +4,11 @@
 
 @section('content_header')
     <h1>Notificaciones</h1>
-    <div class="float-right">
+    {{-- <div class="float-right">
         <a href="{{ route('notificaciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
           {{ __('Crear Nuevo') }}
         </a>
-      </div>
+      </div> --}}
 @stop
 @section('content')
 <table id="example" class="table table-striped table-bordered" style="width:100%">

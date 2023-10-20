@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Class UserController
@@ -22,10 +24,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+        if (Gate::allows('admins')) {
+            $users = User::paginate();
 
-        return view('user.index', compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+            return view('user.index', compact('users'))
+                ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+        } elseif (Gate::allows('standard')) {
+            abort(403);
+        } else {
+            abort(403); // Mostrar un error 403 si el usuario no tiene permiso
+        }
+
     }
 
     /**
@@ -35,6 +44,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        
         $user = new User();
         $user->assignRole('stand');
         return view('user.create', compact('user'));
@@ -48,13 +58,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(User::$rules);
-
-        $user = User::create($request->all());
-        $user->assignRole('stand');
-        return redirect()->route('users.index')
-            ->with('success', 'User created successfully.');
+        try {
+            request()->validate(User::$rules);
+    
+            $user = User::create($request->all());
+            $user->assignRole('stand');
+            return redirect()->route('users.index')
+                ->with('success', 'Usuario creado exitosamente.');
+        } catch (QueryException $e) {
+            // Verificar si la excepción es por una clave única duplicada
+            if ($e->errorInfo[1] === 1062) {
+                // Asignar un mensaje de error a la sesión
+                session()->flash('error', 'El correo electrónico ya está en uso.');
+                // Redirigir de nuevo al formulario de creación
+                return redirect()->back()->withInput();
+            }
+        }
     }
+    
 
     /**
      * Display the specified resource.

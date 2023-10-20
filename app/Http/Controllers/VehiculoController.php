@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Class VehiculoController
@@ -19,10 +20,17 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculos = Vehiculo::paginate();
+        if (Gate::allows('admins')) {
+            $vehiculos = Vehiculo::paginate();
 
-        return view('vehiculo.index', compact('vehiculos'))
-            ->with('i', (request()->input('page', 1) - 1) * $vehiculos->perPage());
+            return view('vehiculo.index', compact('vehiculos'))
+                ->with('i', (request()->input('page', 1) - 1) * $vehiculos->perPage());
+        } elseif (Gate::allows('standard')) {
+            abort(403);
+        } else {
+            abort(403); // Mostrar un error 403 si el usuario no tiene permiso
+        }
+
     }
 
     /**
@@ -45,13 +53,25 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
+        // Validación de los campos del vehículo
         request()->validate(Vehiculo::$rules);
-
+    
+        // Verifica si el usuario ya tiene un vehículo asignado
+        $userId = $request->input('id_conductor');
+        $existingVehicle = Vehiculo::where('id_conductor', $userId)->first();
+    
+        if ($existingVehicle) {
+            return redirect()->route('vehiculos.create')
+                ->with('error', 'Este usuario ya tiene un vehículo asignado.');
+        }
+    
+        // Si no hay un vehículo existente, crea uno nuevo
         $vehiculo = Vehiculo::create($request->all());
-
+    
         return redirect()->route('vehiculos.index')
-            ->with('success', 'Vehiculo created successfully.');
+            ->with('success', 'Vehículo creado exitosamente.');
     }
+    
 
     /**
      * Display the specified resource.
